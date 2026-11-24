@@ -12,3 +12,9 @@ tmp/mobile-layout-profile/
 tmp/mobile-layout-result.json
 tmp/mobile-layout-dump.html
 tmp/mobile-*.png
+dist/
+tmp/
+ss/
+.vscode/
+.vercel/
+firebase/reports/
