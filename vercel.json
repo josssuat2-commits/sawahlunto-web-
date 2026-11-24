@@ -1,0 +1,11 @@
+{
+  "framework": null,
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/html/login_page.html",
+      "permanent": false
+    }
+  ]
+}
