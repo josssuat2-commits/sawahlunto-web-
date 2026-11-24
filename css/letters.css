@@ -1,0 +1,131 @@
+/* Shared paper and controls for the first letter and the letter inside the chest. */
+.btn-document-language {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: none;
+  color: #51351f;
+  font: 500 13px/1.4 var(--font-sans);
+  text-decoration: underline;
+  text-decoration-color: #80522180;
+  text-underline-offset: 5px;
+  cursor: pointer;
+}
+.btn-document-language:hover { color: #27180c; text-decoration-color: currentColor; }
+.btn-document-language:focus-visible { outline: 2px solid #805221; outline-offset: 3px; }
+.ticket-dialog .btn-document-language { color: #eedcc6; text-decoration-color: #c5a074; }
+
+.open-letter-wrapper.letter-presentation,
+.scroll-modal-container.letter-presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: min(920px, calc(100vw - 32px));
+  height: min(800px, calc(100dvh - 128px));
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+}
+.letter-presentation .letter-paper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  max-width: none;
+  max-height: none;
+  padding: 20px clamp(18px, 4vw, 46px) 28px;
+  overflow: hidden;
+  background-image: url('../imge/surat-2.png');
+  background-size: 160% 135%;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  filter: drop-shadow(0 18px 35px #0009);
+}
+.letter-paper > .document-language-toolbar {
+  position: static;
+  width: 100%;
+  flex-shrink: 0;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+}
+.letter-paper .document-close-button { width: 44px; height: 44px; }
+.letter-paper .letter-text {
+  flex: 1 1 0;
+  align-self: center;
+  width: 82%;
+  min-height: 0;
+  max-height: none;
+  margin-top: clamp(8px, 2dvh, 20px);
+  margin-bottom: clamp(20px, 6dvh, 56px);
+  padding-right: 8px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
+  color: #2a1f15;
+  font: 16px/1.75 var(--font-serif);
+}
+.letter-text > p { margin: 0 0 1em; font: inherit; color: inherit; }
+.letter-text > p:last-child { margin-bottom: 0; }
+.letter-presentation .letter-actions {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  align-items: center;
+  flex: 0 0 56px;
+  min-height: 0;
+  height: 56px;
+  width: 100%;
+  gap: 12px;
+  margin-top: 12px;
+}
+.letter-presentation .letter-actions > button,
+.letter-presentation .letter-actions > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px;
+  font: 500 13px/1.4 var(--font-sans);
+  letter-spacing: normal;
+}
+.letter-actions > :only-child { justify-self: center; max-width: 260px; }
+
+.letter-presentation .scroll-modal-actions {
+  grid-template-columns: repeat(2, minmax(0, 160px));
+  justify-content: center;
+}
+
+@media (max-width: 768px), (max-height: 500px) and (orientation: landscape) {
+  .open-letter-wrapper.letter-presentation,
+  .scroll-modal-container.letter-presentation {
+    height: calc(100dvh - 80px - max(12px, env(safe-area-inset-top)) - max(12px, env(safe-area-inset-bottom)));
+    width: calc(100vw - 24px);
+  }
+  .letter-presentation .letter-paper { padding: 12px 18px 20px; }
+  .letter-paper > .document-language-toolbar { margin-bottom: 8px; }
+  .letter-paper .letter-text { font-size: 16px; line-height: 1.7; }
+  .letter-presentation .letter-actions { gap: 8px; }
+}
+
+/* Preserve a usable reading area when a phone is held horizontally. */
+@media (max-height: 500px) and (orientation: landscape) {
+  .letter-presentation .letter-paper { padding-top: 8px; padding-bottom: 8px; }
+  .letter-paper .letter-text { margin-top: 6px; margin-bottom: 12px; }
+}

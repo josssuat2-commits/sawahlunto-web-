@@ -1,0 +1,40 @@
+.lang-switch-top-right { gap: 10px; }
+.btn-settings { display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;flex-shrink:0;padding:9px;border:1.5px solid #c5a07473;border-radius:50%;background:#1a110ae0;color:#eedcc6;cursor:pointer;box-shadow:0 4px 16px #0005; }
+.btn-settings svg { width:22px;height:22px; }
+.btn-settings:hover { background:#2d1e12; border-color:#d6b274; }
+.btn-settings:focus-visible,.settings-dialog button:focus-visible,.settings-dialog input:focus-visible { outline:2px solid #b07a32;outline-offset:4px; }
+.settings-dialog { width:min(580px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:0;margin:auto;border:1px solid #b58a3c;border-top:3px solid #b58a3c;border-radius:8px;background:#faf7ef;color:#35251a;box-shadow:0 20px 65px #0005;font-family:var(--font-sans);overflow:auto;text-align:left; }
+.settings-dialog::backdrop { background:#211a16b8; }
+.settings-header { display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 30px 26px;background:#2d1e14;color:#faf2df; }
+.settings-eyebrow { display:block;margin:0 0 12px;font-size:10px;line-height:1.5;font-weight:500;color:#d5b470;text-transform:uppercase; }
+.settings-header h2 { margin:0;font-family:var(--font-title);font-size:30px;font-weight:500;line-height:1.25; }
+.settings-close,.settings-step { border:0;border-radius:3px;cursor:pointer;width:42px;height:42px;flex-shrink:0;font-size:23px; }
+.settings-close { color:#efe3ce;background:#ffffff0d; }
+.settings-content { padding:26px 30px; }
+.settings-section-label { margin:0 0 12px;font-size:10px;line-height:1.5;text-transform:uppercase;color:#795532; }
+.settings-volume-heading { display:flex;justify-content:space-between;align-items:center;gap:12px; }
+.settings-volume-heading label { font:500 21px var(--font-sans); }
+.settings-volume-heading output { color:#795532;font-size:16px; }
+.settings-description { margin:4px 0 20px;font-size:13px;line-height:1.7;color:#756855; }
+.settings-volume-controls { display:flex;align-items:center;gap:14px; }
+.settings-step { background:#eee5d9;color:#513a28; }
+.settings-volume-controls input { min-width:0;flex:1;width:100%;height:8px;accent-color:#a27431;cursor:pointer; }
+.settings-range-labels { display:flex;justify-content:space-between;padding:6px 56px 0;font-size:11px;color:#756855; }
+.settings-account-section { margin-top:22px;padding-top:22px;border-top:1px solid #ddd0bd; }
+.settings-account { display:flex;gap:16px;align-items:flex-start;padding:20px 16px;background:#f0e9df;border-radius:3px; }
+.settings-avatar { width:48px;height:48px;border-radius:4px;display:grid;place-items:center;background:#ddc6a0;font:20px var(--font-sans);flex-shrink:0; }
+.settings-profile { flex:1;min-width:0; }
+.settings-profile-row { display:flex;justify-content:space-between;align-items:flex-start;gap:12px; }
+.settings-field-label { font-size:11px;color:#756855; }
+.settings-name,.settings-institution { font:17px/1.5 var(--font-sans);overflow-wrap:anywhere; }
+.settings-name { margin:4px 0; }
+.settings-status { padding:7px 12px;background:#e4ead8;color:#435534;font-size:10px;white-space:nowrap;border-radius:2px; }
+.settings-status[data-logged-in="false"] { background:#e9dfd1;color:#75614a; }
+.settings-institution-row { margin-top:6px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap; }
+.settings-logout { margin-top:28px;width:100%;padding:13px;border:0;border-radius:4px;background:#603627;color:#fff8ed;font:14px var(--font-sans);cursor:pointer; }
+.settings-logout:disabled { opacity:.5;cursor:default; }
+.settings-logout-note { margin:10px 0 0;font-size:12px;line-height:1.7;color:#756855; }
+.settings-footer { display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #e5d8c5;padding:14px 30px;font-size:10px;color:#756855; }
+.settings-done { border:0;border-radius:4px;padding:10px 36px;background:#503a25;color:#fff6e3;font:12px var(--font-sans);cursor:pointer; }
+.settings-feedback { margin:8px 0 0;color:#91422f;font-size:12px; }
+@media(max-width:540px) { .settings-header,.settings-content { padding:20px; }.settings-header h2 { font-size:26px; }.settings-footer { padding:14px 20px; }.settings-account { gap:10px;padding:16px 12px; }.settings-profile-row { flex-wrap:wrap; }.settings-avatar { width:38px;height:42px; }.btn-settings { width:38px;height:38px; }.settings-done { padding:10px 22px; } }

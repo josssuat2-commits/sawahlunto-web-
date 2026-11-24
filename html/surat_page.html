@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Warkah - Sawah Lunto</title>
+
+  <!-- CSS Terpadu Tunggal -->
+  <link rel="stylesheet" href="../css/style.css?v=20261113-fonts">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../imge/kertas.png.png">
+  <link rel="stylesheet" href="../css/settings.css?v=20261113-fonts">
+  <link rel="stylesheet" href="../css/mobile.css?v=20261124">
+  <link rel="stylesheet" href="../css/credits.css?v=20261124">
+</head>
+
+<body class="page-surat">
+
+  <!-- Tombol Pengganti Bahasa (Pojok Kanan Atas) -->
+  <div class="lang-switch-top-right">
+    <button type="button" id="btnToggleLanguage" class="btn-lang-toggle" title="Ganti Bahasa / Switch Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="globe-icon">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <span class="lang-badge lang-badge-id active">ID</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-badge lang-badge-en">EN</span>
+    </button>
+  </div>
+
+  <!-- Kontainer Ruangan Latar Belakang (home_page.jpg.png) -->
+  <div class="room-container">
+
+    <!-- Navigasi Atas -->
+    <header class="top-nav-bar">
+      <a href="login_page.html" class="btn-back-nav" title="Kembali ke Buku Tamu" data-i18n-title="surat_back_title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span data-i18n="surat_back_btn">Buku Tamu</span>
+      </a>
+
+      <!-- Lencana Pengunjung Aktif (Tersinkronisasi Database) -->
+      <div id="visitorBadge" class="guest-info-badge" style="display: none;" title="Pengunjung Terdaftar di Database sawah_lunto">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" style="width: 14px; height: 14px; color: #dfb581;">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span data-i18n="visitor">Pengunjung:</span>
+        <span id="visitorName" class="guest-name-highlight">Tamu</span>
+        <span id="visitorInstitusi" class="guest-institusi-tag" style="display: none;"></span>
+      </div>
+    </header>
+
+    <!-- Peti kayu di sebelah kiri kucing pada latar ruangan -->
+    <button type="button" id="chestContainer" class="chest-container" title="Peti (Buka surat terlebih dahulu)" aria-label="Peti (Buka surat terlebih dahulu)" aria-disabled="true">
+      <img src="../imge/kotak.png.png" alt="Peti Kayu Terkunci" class="chest-image">
+      <span class="chest-tooltip" data-i18n="chest_locked">Peti (Buka surat terlebih dahulu)</span>
+    </button>
+
+    <!-- Area Amplop Surat Melayang di Tengah (kertas.png.png) -->
+    <main id="envelopeWrapper" class="envelope-center-wrapper">
+
+      <button type="button" id="envelopeCard" class="envelope-card" title="Buka segel surat" data-i18n-title="envelope_seal_title" aria-describedby="actionSubtext">
+        <span class="envelope-image-wrapper">
+          <img src="../imge/kertas.png.png" alt="Surat Warkah Bersegel" class="envelope-image">
+          <!-- Titik sentuh segel lilin di tengah amplop -->
+          <span id="sealHitbox" class="seal-hitbox" title="Buka segel surat" data-i18n-title="envelope_seal_title"></span>
+        </span>
+      </button>
+
+      <!-- Petunjuk membuka surat melalui amplop atau segel -->
+      <div class="envelope-action-bar">
+        <p class="action-subtext" id="actionSubtext" data-i18n="envelope_subtext">Ketuk amplop atau segel untuk membaca surat dari Ayah</p>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Toast Notifikasi Universal -->
+  <div id="toast" class="toast-message">
+    <span id="toastText">Pemberitahuan</span>
+  </div>
+
+  <!-- JavaScript Terpadu Tunggal -->
+  <script src="../js/translations-static.js?v=20261121-i18n"></script>
+  <script src="../js/heritage-english.js?v=20261121-i18n"></script>
+  <script src="../js/translations-extra.js?v=20261121-i18n"></script>
+  <script src="../firebase/firebase-client.js?v=2"></script>
+  <script src="../js/script.js?v=20261121-i18n"></script>
+  <script src="../js/backsound.js?v=4"></script>
+  <script src="../js/settings.js?v=20261121-i18n"></script>
+  <script src="../js/credits-data.js?v=20261124"></script>
+  <script src="../js/credits.js?v=20261124"></script>
+</body>
+
+</html>

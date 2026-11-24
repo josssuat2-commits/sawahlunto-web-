@@ -1,0 +1,22 @@
+.document-language-toolbar { position: absolute; z-index: 35; display: flex; align-items: center; justify-content: flex-end; gap: 10px; width: auto; margin: 0; }
+.btn-document-language { min-height: 44px; font-size: .8rem; }
+.btn-document-language:focus-visible { outline: 3px solid #805221; outline-offset: 4px; }
+.open-letter-content { padding-top: 80px; }
+.open-letter-content > .document-language-toolbar { top: 16px; right: 20px; }
+.scroll-image-wrapper > .document-language-toolbar { top: -50px; right: -48px; }
+.ticket-dialog { padding-top: 76px; }
+.ticket-dialog > .document-language-toolbar { top: 16px; right: 5%; }
+.document-language-toolbar .document-close-button { position: static; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-sizing: border-box; width: 48px; height: 48px; margin: 0; padding: 0; border: 1px solid #a8793b; border-radius: 50%; color: #e3d2bb; background: #3a2514f5; text-decoration: none; font: 26px/1 var(--font-sans); cursor: pointer; }
+.document-close-button:hover { background: #58391e; }
+.document-close-button:focus-visible { outline: 3px solid #805221; outline-offset: 4px; }
+.ticket-artwork { position: relative; width: 100%; }
+.ticket-artwork .ticket-visual { display: block; width: 100%; height: auto; aspect-ratio: auto; object-fit: contain; }
+@media (max-width: 700px) {
+  .btn-document-language { padding: 8px 12px; }
+  .document-language-toolbar .document-close-button { width: 44px; height: 44px; }
+  .scroll-image-wrapper > .document-language-toolbar { top: -22px; right: -12px; }
+  .page-kotak .scroll-image-wrapper { padding-top: 44px; }
+  .ticket-dialog { padding-top: 60px; }
+  .ticket-dialog > .document-language-toolbar { top: 4px; right: 4%; }
+  .open-letter-text { max-height: 43dvh; }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buku Tamu - Surat Pak Itam yang Belum Selesai</title>
+
+  <!-- CSS Terpadu Tunggal -->
+  <link rel="stylesheet" href="../css/style.css?v=20261113-fonts">
+
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" href="../imge/kertas.png.png">
+  <link rel="stylesheet" href="../css/settings.css?v=20261113-fonts">
+</head>
+
+<body class="page-login">
+
+  <!-- Tombol Pengganti Bahasa (Pojok Kanan Atas) -->
+  <div class="lang-switch-top-right">
+    <button type="button" id="btnToggleLanguage" class="btn-lang-toggle" title="Ganti Bahasa / Switch Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="globe-icon">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <span class="lang-badge lang-badge-id active">ID</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-badge lang-badge-en">EN</span>
+    </button>
+  </div>
+
+  <!-- Wrapper Utama -->
+  <main class="login-wrapper">
+    <div class="guestbook-card">
+
+      <!-- Hiasan & Label Atas -->
+      <div class="card-header-ornament">
+        <span class="ornament-line"></span>
+        <span class="category-badge" data-i18n="login_category">Buku Tamu</span>
+        <span class="ornament-line"></span>
+      </div>
+
+      <!-- Judul & Subteks -->
+      <h1 class="main-title" data-i18n="login_title">Surat Pak Itam yang Belum Selesai</h1>
+      <p class="card-subtitle" data-i18n="login_subtitle">
+        Silakan daftarkan nama dan asal institusi.
+      </p>
+
+      <!-- Formulir Masuk / Registrasi Tamu -->
+      <form id="loginForm" class="login-form" novalidate>
+
+        <!-- Field Nama Lengkap -->
+        <div class="form-group">
+          <div class="label-row">
+            <label for="namaLengkap" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                <path d="M7 15h0"></path>
+                <path d="M2 9.5h20"></path>
+              </svg>
+              <span data-i18n="login_name_label">Nama Lengkap</span>
+            </label>
+            <span class="field-hint" data-i18n="login_name_hint">Gelar/Panggilan Diterima</span>
+          </div>
+
+          <div class="input-container">
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="16" rx="3"></rect>
+                <circle cx="9" cy="10" r="2"></circle>
+                <line x1="15" y1="8" x2="17" y2="8"></line>
+                <line x1="15" y1="12" x2="17" y2="12"></line>
+                <line x1="7" y1="16" x2="17" y2="16"></line>
+              </svg>
+            </span>
+            <input type="text" id="namaLengkap" name="namaLengkap" class="form-input"
+              placeholder="Contoh: Raden Satria / Anastasia Lestari" data-i18n-placeholder="login_name_placeholder"
+              autocomplete="name" required>
+          </div>
+        </div>
+
+        <!-- Field Asal Sekolah / Lembaga Riset -->
+        <div class="form-group">
+          <div class="label-row">
+            <label for="institusi" class="field-label">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 21h18"></path>
+                <path d="M3 10h18"></path>
+                <path d="M5 6l7-3 7 3"></path>
+                <path d="M4 10v11"></path>
+                <path d="M20 10v11"></path>
+                <path d="M8 14v4"></path>
+                <path d="M12 14v4"></path>
+                <path d="M16 14v4"></path>
+              </svg>
+              <span data-i18n="login_inst_label">Asal Sekolah / Lembaga Riset</span>
+            </label>
+            <span class="field-hint" data-i18n="login_inst_hint">Institusi atau Mandiri</span>
+          </div>
+
+          <div class="input-container">
+            <span class="input-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M3 9l9-6 9 6v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </span>
+            <input type="text" id="institusi" name="institusi" class="form-input"
+              placeholder="Contoh: SMA Negeri 1 Yogyakarta / Universitas Indonesia"
+              data-i18n-placeholder="login_inst_placeholder" autocomplete="organization" required>
+          </div>
+        </div>
+
+        <!-- Opsi Ingat Saya & Akses Tanpa Sandi -->
+        <div class="options-row">
+          <label class="checkbox-label" for="rememberMe">
+            <input type="checkbox" id="rememberMe" class="custom-checkbox" checked>
+            <span data-i18n="login_remember">Simpan</span>
+          </label>
+
+          <div class="no-password-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 9.9-1"></path>
+            </svg>
+            <span data-i18n="login_nopass">Akses Tanpa Sandi</span>
+          </div>
+        </div>
+
+        <!-- Tombol Masuk -->
+        <button type="submit" id="submitBtn" class="btn-submit">
+          <span class="btn-text" data-i18n="login_submit">Masuk</span>
+          <span class="spinner"></span>
+        </button>
+
+      </form>
+
+      <!-- Catatan Kaki Akses Bebas -->
+      <div class="card-footer-notice">
+        <span class="notice-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+        </span>
+        <span data-i18n="login_notice">Tidak memerlukan kata sandi. Pintu perpustakaan terbuka lebar untuk setiap pencari ilmu.</span>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Notifikasi Toast -->
+  <div id="toast" class="toast-message">
+    <span id="toastText">Selamat datang di perpustakaan naskah.</span>
+  </div>
+
+  <!-- JavaScript Terpadu Tunggal -->
+  <script src="../js/translations-static.js?v=20261121-i18n"></script>
+  <script src="../js/heritage-english.js?v=20261121-i18n"></script>
+  <script src="../js/translations-extra.js?v=20261121-i18n"></script>
+  <script src="../firebase/firebase-client.js?v=2"></script>
+  <script src="../js/script.js?v=20261121-i18n"></script>
+  <script src="../js/backsound.js?v=4"></script>
+  <script src="../js/settings.js?v=20261121-i18n"></script>
+</body>
+
+</html>

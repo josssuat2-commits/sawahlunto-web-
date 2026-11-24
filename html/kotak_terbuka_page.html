@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peti Terbuka - Sawah Lunto</title>
+
+  <!-- CSS Terpadu Tunggal -->
+  <link rel="stylesheet" href="../css/style.css?v=20261113-chest-layout">
+  <link rel="stylesheet" href="../css/relic-dialogs.css?v=20261122-gallery">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../imge/kertas.png.png">
+  <link rel="stylesheet" href="../css/settings.css?v=20261113-fonts">
+  <link rel="stylesheet" href="../css/translations-tansi.css?v=20261122-ticket-images">
+  <link rel="stylesheet" href="../css/mobile.css?v=20261124">
+  <link rel="stylesheet" href="../css/letters.css?v=20261124-compact-actions">
+  <link rel="stylesheet" href="../css/credits.css?v=20261124">
+</head>
+
+<body class="page-kotak">
+
+  <!-- Tombol Pengganti Bahasa (Pojok Kanan Atas) -->
+  <div class="lang-switch-top-right">
+    <button type="button" id="btnToggleLanguage" class="btn-lang-toggle" title="Ganti Bahasa / Switch Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="globe-icon">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <span class="lang-badge lang-badge-id active">ID</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-badge lang-badge-en">EN</span>
+    </button>
+  </div>
+
+  <!-- Ruangan Kamar Latar Belakang -->
+  <div class="room-container">
+
+    <!-- Navigasi Atas Kiri -->
+    <aside class="exploration-progress" aria-label="Progres eksplorasi">
+      <p id="explorationProgressText" aria-live="polite">0 dari 5 benda selesai ditelusuri</p>
+      <progress id="explorationProgressBar" max="5" value="0">0 dari 5</progress>
+      <p id="explorationNextStep">Mulai dengan membaca surat dari Ayah.</p>
+    </aside>
+    <header class="top-nav-bar">
+      <a href="surat_page.html" class="btn-back-nav" title="Kembali ke Ruangan Surat" data-i18n-title="kotak_back_title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span data-i18n="kotak_back_btn">Kembali ke Ruangan</span>
+      </a>
+    </header>
+
+    <!-- Tampilan Peti Terbuka di Tengah Layar -->
+    <main class="open-chest-viewport">
+      <div id="openChestContainer" class="open-chest-container">
+        <img src="../imge/kotak_terbuka_png.png" alt="Peti Kayu Terbuka" class="open-chest-main-image">
+
+        <!-- Area Rongga Interior Peti -->
+        <div class="chest-inventory-surface">
+          <button type="button" class="inventory-item item-scroll is-unlocked pulse-target" id="itemScroll" data-item="scroll"
+            title="Surat dari Ayah (Bisa Dibuka)">
+            <img id="imgScroll" src="../imge/kertas.png.png" alt="Surat dari Ayah Bersegel">
+          </button>
+
+          <button type="button" class="inventory-item item-album is-locked" id="itemAlbum" data-item="album"
+            title="Album Foto Dokumentasi (Terkunci)">
+            <img id="imgAlbum" src="../imge/terkunci_ album_png.png" alt="Album Foto">
+          </button>
+
+          <button type="button" class="inventory-item item-map is-locked" id="itemMap" data-item="map"
+            title="Peta Rahasia Terowongan (Terkunci)">
+            <img id="imgMap" src="../imge/terkunci_peta_png.png" alt="Peta Rahasia">
+          </button>
+
+          <button type="button" class="inventory-item item-lantern is-locked" id="itemLantern" data-item="lantern"
+            title="Lentera Tambang (Terkunci)">
+            <img id="imgLantern" src="../imge/terkunci_lentera_png.png" alt="Lentera Tambang">
+          </button>
+
+          <button type="button" class="inventory-item item-ticket is-locked" id="itemTicket" data-item="ticket"
+            title="Tiket Kereta Mak Itam (Terkunci)">
+            <img id="imgTicket" src="../imge/terkunci_tiket_png.png" alt="Tiket Kereta">
+          </button>
+        </div>
+
+        <!-- Tombol Aksi di Papan Depan Peti -->
+        <div class="chest-action-group">
+          <button type="button" id="btnOpenAllItems" class="btn-open-item" data-i18n="btn_open_all">Buka Benda</button>
+          <p class="chest-action-subtext" id="chestActionSubtext" data-i18n="subtext_start">Ketuk surat dari Ayah untuk memulai penyelidikan</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+
+  <dialog id="ticketDialog" class="ticket-dialog" aria-label="Tiket Kereta Mak Itam">
+    <button type="button" class="relic-close-button" data-close-ticket aria-label="Tutup tiket">×</button>
+    <img class="ticket-visual" src="../imge/tiket Bahasa Tansi.png" alt="Tiket perjalanan Kereta Mak Itam Sawahlunto">
+    <footer class="ticket-actions">
+      <button type="button" id="btnTicketContinue" data-close-ticket>Lanjut Jelajah</button>
+      <button type="button" id="btnTicketLogout">Yuk, ke Sawahlunto! →</button>
+    </footer>
+  </dialog>
+
+  <!-- 0. POPUP SURAT DARI AYAH (TAMPILAN GAMBAR surat-2.png TANPA UI) -->
+  <div id="scrollInspectionModal" class="inspection-modal-overlay">
+    <div class="scroll-modal-container letter-presentation">
+      <div class="scroll-image-wrapper letter-paper">
+        <button type="button" class="btn-close-scroll" id="btnCloseScrollInspection" aria-label="Tutup" data-i18n-title="btn_close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <article class="scroll-letter-text letter-text" aria-label="Surat dari Ayah">
+          <p>Nak, dari Sawahlunto kita bisa belajar bahwa sesuatu yang pernah berjaya tidak harus hilang ketika zaman berubah. Terkadang, ia hanya perlu menemukan cara baru untuk tetap berarti.</p>
+          <p>Begitu pula dengan hidupmu di perantauan. Akan ada banyak perubahan, kesulitan, dan jalan yang harus kau tempuh. Namun, Ayah berharap kau selalu ingat dari mana kau berasal. Sejauh apa pun langkahmu membawamu pergi, jangan pernah melupakan cerita dan tempat yang membentuk dirimu.</p>
+          <p><strong>Karena sejauh apa pun kau merantau, selalu ada cerita yang menunggumu pulang.</strong></p>
+          <p>Oh iya, Nak, sebelum Ayah mengakhiri surat ini, ada satu hal yang ingin Ayah sampaikan. Kau masih menyimpan kotak yang dulu Ayah berikan sebelum keberangkatanmu, bukan?</p>
+          <p><strong>Sekarang, Ayah ingin kau membuka kotak itu.</strong> Di dalamnya, Ayah menyimpan sesuatu yang mungkin akan membantumu memahami lebih banyak tentang Sawahlunto dan kisah-kisah yang belum sempat Ayah ceritakan.</p>
+          <p>Bukalah perlahan, Nak. Sebab, apa yang ada di dalamnya bukan sekadar peninggalan masa lalu, melainkan awal dari sebuah cerita yang belum selesai.</p>
+          <p class="scroll-letter-signature"><strong>Salam rindu,<br>Ayah</strong></p>
+        </article>
+      </div>
+      <div class="scroll-modal-actions letter-actions">
+        <button type="button" id="btnCloseScrollModal" class="btn-album-close">Kembali</button>
+        <button type="button" id="btnUnlockAlbumStep" class="btn-step-unlock">
+          <span data-i18n="scroll_unlock_btn">Lanjut Jelajah</span>
+          <span class="arrow-symbol">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. POPUP BILIK INSPEKSI RELIKUI -->
+  <div id="inspectionModal" class="inspection-modal-overlay">
+    <div class="inspection-modal-card">
+      <div class="inspection-header">
+        <div class="inspection-title-group">
+          <span class="inspection-kicker" id="inspectKicker">BILIK INSPEKSI RELIKUI</span>
+          <div class="inspection-main-title">
+            <span class="status-dot"></span>
+            <h2 id="inspectTitle">Judul Dokumen</h2>
+          </div>
+        </div>
+        <button type="button" class="btn-close-inspection" id="btnCloseInspection" aria-label="Tutup" data-i18n-title="btn_close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+            stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="parchment-sheet">
+        <div class="parchment-watermark-seal"></div>
+        <div class="parchment-meta-row">
+          <span class="parchment-reg" id="parchmentReg">NO. REGISTRASI</span>
+          <span class="parchment-date" id="parchmentDate">Tanggal</span>
+        </div>
+        <h3 class="parchment-heading" id="parchmentHeading">Judul Heading</h3>
+        <div class="parchment-divider"></div>
+        <div class="parchment-body" id="parchmentBody">
+          <!-- Konten dinamis diisi oleh JS dari HTML Data -->
+        </div>
+        <div class="parchment-footer">
+          <div class="parchment-author-stamp">
+            <span class="stamp-label" data-i18n="ticket_author_label">TERTANDA &amp; DICAP:</span>
+            <span class="stamp-author" id="parchmentAuthor">Nama Penulis</span>
+          </div>
+          <button type="button" class="btn-step-unlock" id="btnStepUnlock">
+            <span id="btnStepText">Lanjut</span>
+            <span class="arrow-symbol">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Album, lentera dan peta dari prototipe; progres tetap memakai alur utama. -->
+  <dialog class="prototype-gallery" id="prototypeGallery" aria-labelledby="galleryTitle">
+    <header class="prototype-gallery-header">
+      <h1 id="galleryTitle">Galeri Sawahlunto</h1>
+      <button type="button" class="gallery-close-icon" data-close-album aria-label="Tutup album">×</button>
+    </header>
+    <div class="prototype-gallery-body">
+      <article class="prototype-photo-card" id="photoCard" aria-live="polite" aria-atomic="true">
+        <img id="galleryPhoto" src="../imge/lentera_foto_2.jpg" alt="Panorama Kota Sawahlunto di antara perbukitan">
+        <nav class="gallery-image-controls" id="galleryImageControls" aria-label="Foto dalam bagian ini" hidden>
+          <button type="button" id="previousGalleryImage" aria-label="Foto sebelumnya dalam bagian ini" aria-controls="galleryPhoto">‹</button>
+          <span id="galleryImageCount" aria-live="polite" aria-atomic="true"></span>
+          <button type="button" id="nextGalleryImage" aria-label="Foto berikutnya dalam bagian ini" aria-controls="galleryPhoto">›</button>
+        </nav>
+        <h2 id="galleryPhotoTitle">Kota Sawahlunto</h2>
+        <p id="galleryPhotoNote"></p>
+      </article>
+      <div class="gallery-slide-controls">
+        <button type="button" class="gallery-arrow gallery-arrow-prev" id="previousPhoto" aria-label="Bagian sebelumnya">‹</button>
+        <div class="gallery-slide-position">
+          <nav class="gallery-pagination" aria-label="Pilih bagian album" id="galleryPagination"></nav>
+          <p class="gallery-photo-count" id="galleryPhotoCount">Bagian 1 dari 12</p>
+        </div>
+        <button type="button" class="gallery-arrow gallery-arrow-next" id="nextPhoto" aria-label="Bagian berikutnya">›</button>
+      </div>
+    </div>
+    <footer class="prototype-gallery-footer">
+      <button type="button" class="gallery-footer-close" data-close-album>Kembali</button>
+      <button type="button" class="gallery-continue" id="btnUnlockMapStep" data-quest-complete data-i18n="btn_unlock_map">Jelajahi Peta →</button>
+    </footer>
+  </dialog>
+  <dialog class="prototype-gallery prototype-lantern" id="prototypeLantern" aria-labelledby="lanternTitle">
+    <header class="lantern-prototype-header">
+      <div class="lantern-heading-icon" aria-hidden="true">⚒</div>
+      <div>
+        <h1 id="lanternTitle">JEJAK SEJARAH SAWAH LUNTO</h1>
+      </div>
+      <button type="button" class="gallery-close-icon" data-close-lantern aria-label="Tutup lentera">×</button>
+    </header>
+    <div class="lantern-prototype-body">
+      <article class="lantern-prototype-text" aria-live="polite" aria-atomic="true">
+        <h2><span id="lanternSectionNumber">1</span><span id="lanternSectionTitle"></span></h2>
+        <div id="lanternSectionContent"></div>
+      </article>
+      <figure class="lantern-prototype-photo">
+        <img id="lanternSectionPhoto" src="../imge/lentera_foto_1.jpg" alt="Kantor Walikota Sawahlunto">
+      </figure>
+    </div>
+    <footer class="lantern-prototype-footer">
+      <button type="button" class="lantern-prototype-close" data-close-lantern>× KEMBALI</button>
+      <div class="lantern-prototype-navigation">
+        <span id="lanternSectionCount">1 / 5</span>
+        <button type="button" class="lantern-prototype-back" id="lanternPrevious">← KEMBALI</button>
+        <button type="button" class="lantern-prototype-next" id="lanternNext">LANJUT JELAJAH →</button>
+        <button type="button" class="lantern-prototype-next" id="btnUnlockTicketStep" data-quest-complete data-i18n="btn_unlock_ticket" hidden>LANJUT JELAJAH →</button>
+      </div>
+    </footer>
+  </dialog>
+  <dialog class="prototype-gallery prototype-map" id="prototypeMap" aria-labelledby="prototypeMapTitle">
+    <header class="map-prototype-header">
+      <span class="map-heading-icon" aria-hidden="true">⌖</span>
+      <div>
+        <h1 id="prototypeMapTitle">Jelajahi Peta Sawahlunto</h1>
+      </div>
+      <button type="button" class="gallery-close-icon" data-close-map aria-label="Tutup peta">×</button>
+    </header>
+    <div class="map-prototype-body">
+      <aside class="map-destination-panel" aria-label="Informasi lokasi">
+        <img class="map-destination-photo" id="prototypeMapPhoto" src="../imge/Museum Goedang Ransoem_1.jpeg" alt="Museum Goedang Ransoem Sawahlunto">
+        <div class="map-photo-switch" aria-label="Pilih foto lokasi">
+          <button type="button" id="prototypeMapPhoto1" aria-pressed="true">Foto 1</button>
+          <button type="button" id="prototypeMapPhoto2" aria-pressed="false">Foto 2</button>
+        </div>
+        <article class="map-destination-details" aria-live="polite" aria-atomic="true">
+          <h2 id="prototypeMapName"></h2>
+          <p id="prototypeMapDescription"></p>
+          <p class="map-destination-hours"><span id="prototypeMapHours"></span><br><span id="prototypeMapClosed"></span></p>
+        </article>
+        <nav class="map-destination-list" id="prototypeMapLocations" aria-label="Pilih lokasi wisata"></nav>
+        <a class="map-external-link" id="prototypeMapLink" href="https://maps.app.goo.gl/AqiphxFCUDw4pYJM9" target="_blank" rel="noopener noreferrer">Buka di Google Maps ↗</a>
+      </aside>
+      <div class="map-preview-panel">
+        <iframe id="prototypeMapFrame" title="Peta lokasi wisata Sawahlunto di Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <p class="map-preview-help">Peta memerlukan koneksi internet. Jika tidak tampil, gunakan tautan Google Maps di panel lokasi.</p>
+      </div>
+    </div>
+    <footer class="map-prototype-footer">
+      <button type="button" class="map-close-button" data-close-map>× Kembali</button>
+      <div class="map-footer-navigation">
+        <span id="prototypeMapCount">1 / 6</span>
+        <button type="button" class="map-next-button" id="prototypeMapNext">Lanjut Jelajah →</button>
+        <button type="button" class="map-next-button" id="btnUnlockLanternStep" data-quest-complete data-i18n="btn_unlock_lantern" hidden>Lanjut Jelajah →</button>
+      </div>
+    </footer>
+  </dialog>
+
+  <div id="inspectionDataContainer" style="display: none;">
+    <!-- 1. Surat dari Ayah (Dikosongkan sesuai permintaan) -->
+    <div class="inspection-data" data-item="scroll" data-kicker="BILIK INSPEKSI RELIKUI SAWAHLUNTO 2026"
+      data-title="Surat dari Ayah" data-reg="WARKAH RAHASIA NO. REGISTRASI SWL-2026-01"
+      data-date="Lembah Sawahlunto, 14 Djoeli 2026" data-heading="Pesan Terakhir Ayahanda Sastrowardoyo"
+      data-author="R.M. Sastrowardoyo (Kurator Arsip)" data-action="Selesai Membaca & Buka Album Foto"
+      data-next="album">
+      <div class="inspection-body">
+        <!-- Kosongkan saja dulu -->
+      </div>
+    </div>
+
+    <!-- 2. Album Foto -->
+      <div class="inspection-data" data-item="album" data-kicker="BILIK INSPEKSI RELIKUI SAWAHLUNTO 2026"
+        data-title="Album Foto Dokumentasi & Potret Ombilin 1890-an" data-reg="ARSIP FOTOGRAFI NO. REG: SWL-1894-02"
+        data-date="Studio Foto Ombilin, September 1892" data-heading="Potret Saksi Bisu Orang Rantai & Kota Arang"
+        data-author="Dokumentasi Visual Pertambangan Ombilin" data-action="Selesai Meneliti Foto & Buka Peta Terowongan"
+        data-next="map">
+        <div class="inspection-body">
+          <p class="quote-intro">"Wajah-wajah jang tabah di balik debu hitam legam..."</p>
+          <p>Di dalam album ini tersimpan potret autentik para pekerja rantai dan buruh tambang yang didatangkan dari
+            berbagai penjuru Nusantara. Mereka menggali perut bumi Sawahlunto dalam kegelapan pekat demi memutar roda
+            peradaban mesin uap.</p>
+          <p>Perhatikan baik-baik latar belakang salah satu foto di dinding terowongan utama. Di samping lori batu
+            bara tertulis tanda rahasia yang merujuk pada cetak biru terowongan bawah tanah.</p>
+          <p>Peta tersembunyi tersebut menyimpan jalur ventilasi keluar darurat yang dirancang oleh para pekerja
+            terdahulu.</p>
+        </div>
+      </div>
+
+      <!-- 3. Peta Rahasia -->
+      <div class="inspection-data" data-item="map" data-kicker="BILIK INSPEKSI RELIKUI SAWAHLUNTO 1894"
+        data-title="Peta Topografi & Jaringan Terowongan Bawah Tanah" data-reg="KARTOGRAFI BAWAH TANAH REG: SWL-1894-03"
+        data-date="Biro Pemetaan Pertambangan, Mei 1893" data-heading="Cetak Biru Lubang Mbah Soero & Jalur Lori"
+        data-author="Kepala Surveyor Geologi Ombilin" data-action="Selesai Mempelajari Peta & Buka Lentera Tambang"
+        data-next="lantern">
+        <div class="inspection-body">
+          <p class="quote-intro">"Garis-garis rahasia di perut bumi Bukit Barisan..."</p>
+          <p>Lembaran kanvas ini menggambarkan denah lengkap terowongan penambangan bawah tanah sepanjang ratusan
+            meter, lengkap dengan rel lori pengangkut batu bara dan kubah resapan air.</p>
+          <p>Lorong ke-4 ditandai dengan lingkaran khusus: lorong dengan kandungan gas metana tinggi yang hanya aman
+            dilalui dengan lentera minyak khusus berselubung kuningan tebal.</p>
+          <p>Lentera penambang di dalam peti ini adalah pelindung utama yang harus dinyalakan sebelum melangkah lebih
+            jauh.</p>
+        </div>
+      </div>
+
+      <!-- 4. Lentera Tambang -->
+      <div class="inspection-data" data-item="lantern" data-kicker="BILIK INSPEKSI RELIKUI SAWAHLUNTO 1894"
+        data-title="Lentera Keselamatan Penambang Ombilin" data-reg="ARTEFAK KESELAMATAN REG: SWL-1894-04"
+        data-date="Bengkel Mekanik Ombilin, Oktober 1893" data-heading="Api Penuntun di Tengah Pekatnya Lorong Bumi"
+        data-author="Instalasi Keselamatan Tambang Bawah Tanah"
+        data-action="Selesai Menyalakan Lentera & Buka Tiket Mak Itam" data-next="ticket">
+        <div class="inspection-body">
+          <p class="quote-intro">"Nyalakan lentera ini, dan biarkan cahayanya menerangi sejarah yang terkubur bersama debu batu bara..."</p>
+          <p>Lentera ini bukan sekadar alat penerang biasa. Di kedalaman terowongan tambang Ombilin yang gelap gulita,
+            lentera kuningan berselubung kaca tebal ini adalah garis tipis antara hidup dan mati. Para penambang "Orang
+            Rantai" menggantungkan nyawa mereka pada nyala api kecil di balik kaca ini—jika api redup atau berubah warna,
+            itu pertanda gas metana mematikan telah memenuhi lorong.</p>
+          <p>Sawahlunto memiliki perjalanan sejarah yang unik, diawali pada tahun 1867 ketika geolog Belanda,
+            Ir. Willem Hendrik de Greve, menemukan cadangan batu bara raksasa sebesar 200 juta ton di aliran
+            Batang Ombilin. Penemuan berharga tersebut mendorong Pemerintah Hindia Belanda untuk merancang
+            kawasan industri pertambangan modern dan meresmikan berdirinya Kota Sawahlunto pada 1 Desember 1888.</p>
+          <p>Demi mendukung pengangkutan batu bara menuju Pelabuhan Teluk Bayur di Padang, Belanda membangun
+            jaringan infrastruktur megah, termasuk jalur kereta api menembus perbukitan Minangkabau. Pembangunan dan
+            operasional tambang pada masa itu mengandalkan ribuan buruh paksa berstatus tahanan yang dikenal sebagai
+            "Orang Rantai", sembari dilengkapi dengan berbagai fasilitas pendukung seperti dapur umum raksasa Goedang
+            Ransoem dan terowongan Lubang Mbah Soero.</p>
+          <p>Seiring menipisnya cadangan batu bara sejak era Perang Dunia II hingga akhir 1970-an, produksi
+            tambang merosot tajam dan memicu migrasi besar-besaran penduduk, sehingga Sawahlunto sempat
+            terancam menjadi "kota mati". Kerja keras mengkonversi peninggalan bersejarah mencapai puncaknya
+            pada tahun 2019 saat UNESCO secara resmi menetapkan Ombilin Coal Mining Heritage of Sawahlunto
+            sebagai Situs Warisan Dunia.</p>
+          <p>Nyalakan lentera ini dan raihlah tiket terakhir—karcis kereta api uap Mak Itam yang akan membawamu
+            menempuh perjalanan akhir menyusuri rel warisan Nusantara.</p>
+        </div>
+      </div>
+
+      <!-- 5. Tiket Kereta -->
+      <div class="inspection-data" data-item="ticket" data-kicker="BILIK INSPEKSI RELIKUI SAWAHLUNTO 1894"
+        data-title="Karcis Perjalanan Kereta Api Uap Mak Itam" data-reg="PAS JALUR REL NEGARA (SSS) REG: SWL-1894-05"
+        data-date="Stasiun Sawahlunto - Pelabuhan Emmahaven (Teluk Bayur)"
+        data-heading="Tiket Emas Menuju Kebebasan Nusantara" data-author="Staatsspoorwegen ter Sumatra's Westkust (SSS)"
+        data-action="Tuntaskan Misi & Rayakan Keberhasilan 🎉" data-next="">
+        <div class="inspection-body">
+          <!-- Konten tiket akan diisi di sini -->
+        </div>
+      </div>
+    </div>
+
+    <div id="albumDataContainer" style="display: none;">
+      <div class="album-slide" data-index="0" data-img="../imge/foto_1.jpeg" data-plate="Dokumentasi Foto #01"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Sejarah & Transformasi Kota Sawahlunto"
+        data-technique="Arsip Bersejarah Sawahlunto" data-collection="Bilik Pusaka Sastrowardoyo"
+        data-status="Warisan Dunia UNESCO">
+        <div class="album-description">
+          <p style="margin-bottom: 10px;">Sawahlunto memiliki perjalanan sejarah yang unik, diawali pada tahun 1867
+            ketika geolog Belanda, Ir. Willem Hendrik de Greve, menemukan cadangan batu bara raksasa sebesar 200 juta
+            ton di aliran Batang Ombilin. Penemuan berharga tersebut mendorong Pemerintah Hindia Belanda untuk
+            merancang kawasan industri pertambangan modern dan meresmikan berdirinya Kota Sawahlunto pada 1 Desember
+            1888. Demi mendukung pengangkutan batu bara menuju Pelabuhan Teluk Bayur di Padang, Belanda membangun
+            jaringan infrastruktur megah, termasuk jalur kereta api menembus perbukitan Minangkabau. Pembangunan dan
+            operasional tambang pada masa itu mengandalkan ribuan buruh paksa berstatus tahanan yang dikenal sebagai
+            "Orang Rantai", sembari dilengkapi dengan berbagai fasilitas pendukung seperti dapur umum raksasa Goedang
+            Ransoem dan terowongan Lubang Mbah Soero.</p>
+          <p>Seiring menipisnya cadangan batu bara sejak era Perang Dunia II hingga akhir 1970-an, produksi tambang
+            merosot tajam dan memicu migrasi besar-besaran penduduk, sehingga Sawahlunto sempat terancam menjadi "kota
+            mati". Menghadapi kondisi tersebut, pemerintah dan masyarakat lokal melakukan transformasi besar pada awal
+            tahun 2000-an dengan mengalihkan fokus kota dari industri ekstraktif menjadi destinasi pariwisata berbasis
+            warisan budaya dan penataan lahan bekas tambang. Kerja keras mengkonversi peninggalan bersejarah tersebut
+            mencapai puncaknya pada tahun 2019 saat UNESCO secara resmi menetapkan Ombilin Coal Mining Heritage of
+            Sawahlunto sebagai Situs Warisan Dunia, mengukuhkan keberhasilan Sawahlunto berganti wajah menjadi kota
+            wisata sejarah yang edukatif.</p>
+        </div>
+      </div>
+
+      <div class="album-slide" data-index="1" data-img="../imge/foto_2.jpeg" data-plate="Dokumentasi Foto #02"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Sejarah & Transformasi Kota Sawahlunto"
+        data-technique="Arsip Bersejarah Sawahlunto" data-collection="Bilik Pusaka Sastrowardoyo"
+        data-status="Warisan Dunia UNESCO">
+        <div class="album-description">
+          <p style="margin-bottom: 10px;">Sawahlunto memiliki perjalanan sejarah yang unik, diawali pada tahun 1867
+            ketika geolog Belanda, Ir. Willem Hendrik de Greve, menemukan cadangan batu bara raksasa sebesar 200 juta
+            ton di aliran Batang Ombilin. Penemuan berharga tersebut mendorong Pemerintah Hindia Belanda untuk
+            merancang kawasan industri pertambangan modern dan meresmikan berdirinya Kota Sawahlunto pada 1 Desember
+            1888. Demi mendukung pengangkutan batu bara menuju Pelabuhan Teluk Bayur di Padang, Belanda membangun
+            jaringan infrastruktur megah, termasuk jalur kereta api menembus perbukitan Minangkabau. Pembangunan dan
+            operasional tambang pada masa itu mengandalkan ribuan buruh paksa berstatus tahanan yang dikenal sebagai
+            "Orang Rantai", sembari dilengkapi dengan berbagai fasilitas pendukung seperti dapur umum raksasa Goedang
+            Ransoem dan terowongan Lubang Mbah Soero.</p>
+          <p>Seiring menipisnya cadangan batu bara sejak era Perang Dunia II hingga akhir 1970-an, produksi tambang
+            merosot tajam dan memicu migrasi besar-besaran penduduk, sehingga Sawahlunto sempat terancam menjadi "kota
+            mati". Menghadapi kondisi tersebut, pemerintah dan masyarakat lokal melakukan transformasi besar pada awal
+            tahun 2000-an dengan mengalihkan fokus kota dari industri ekstraktif menjadi destinasi pariwisata berbasis
+            warisan budaya dan penataan lahan bekas tambang. Kerja keras mengkonversi peninggalan bersejarah tersebut
+            mencapai puncaknya pada tahun 2019 saat UNESCO secara resmi menetapkan Ombilin Coal Mining Heritage of
+            Sawahlunto sebagai Situs Warisan Dunia, mengukuhkan keberhasilan Sawahlunto berganti wajah menjadi kota
+            wisata sejarah yang edukatif.</p>
+        </div>
+      </div>
+
+      <div class="album-slide" data-index="2" data-img="../imge/foto_5.jpg" data-plate="Dokumentasi Foto #03"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Sejarah & Transformasi Kota Sawahlunto"
+        data-technique="Arsip Bersejarah Sawahlunto" data-collection="Bilik Pusaka Sastrowardoyo"
+        data-status="Warisan Dunia UNESCO">
+        <div class="album-description">
+          <p style="margin-bottom: 10px;">Sawahlunto memiliki perjalanan sejarah yang unik, diawali pada tahun 1867
+            ketika geolog Belanda, Ir. Willem Hendrik de Greve, menemukan cadangan batu bara raksasa sebesar 200 juta
+            ton di aliran Batang Ombilin. Penemuan berharga tersebut mendorong Pemerintah Hindia Belanda untuk
+            merancang kawasan industri pertambangan modern dan meresmikan berdirinya Kota Sawahlunto pada 1 Desember
+            1888. Demi mendukung pengangkutan batu bara menuju Pelabuhan Teluk Bayur di Padang, Belanda membangun
+            jaringan infrastruktur megah, termasuk jalur kereta api menembus perbukitan Minangkabau. Pembangunan dan
+            operasional tambang pada masa itu mengandalkan ribuan buruh paksa berstatus tahanan yang dikenal sebagai
+            "Orang Rantai", sembari dilengkapi dengan berbagai fasilitas pendukung seperti dapur umum raksasa Goedang
+            Ransoem dan terowongan Lubang Mbah Soero.</p>
+          <p>Seiring menipisnya cadangan batu bara sejak era Perang Dunia II hingga akhir 1970-an, produksi tambang
+            merosot tajam dan memicu migrasi besar-besaran penduduk, sehingga Sawahlunto sempat terancam menjadi "kota
+            mati". Menghadapi kondisi tersebut, pemerintah dan masyarakat lokal melakukan transformasi besar pada awal
+            tahun 2000-an dengan mengalihkan fokus kota dari industri ekstraktif menjadi destinasi pariwisata berbasis
+            warisan budaya dan penataan lahan bekas tambang. Kerja keras mengkonversi peninggalan bersejarah tersebut
+            mencapai puncaknya pada tahun 2019 saat UNESCO secara resmi menetapkan Ombilin Coal Mining Heritage of
+            Sawahlunto sebagai Situs Warisan Dunia, mengukuhkan keberhasilan Sawahlunto berganti wajah menjadi kota
+            wisata sejarah yang edukatif.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="mapDataContainer" style="display: none;">
+      <div class="map-destination" data-index="0" data-name="Museum Goedang Ransoem Sawahlunto"
+        data-type="MUSEUM WARISAN KULINER & PERALATAN SEJARAH" data-img1="../imge/Museum Goedang Ransoem_1.jpeg"
+        data-img2="../imge/Museum Goedang Ransoem_2.jpg"
+        data-desc="Dapur umum raksasa peninggalan era kolonial tahun 1918 yang memamerkan peralatan masak bersejarah dan tungku pembakaran uap."
+        data-hours="Selasa – Minggu: 08.00 – 16.00 WIB" data-closed="Senin: Tutup (Hari Perawatan)"
+        data-maps="https://maps.app.goo.gl/AqiphxFCUDw4pYJM9"></div>
+
+      <div class="map-destination" data-index="1" data-name="Museum Situs Lubang Tambang Soero & Infobox"
+        data-type="MUSEUM SEJARAH & TEROWONGAN BAWAH TANAH"
+        data-img1="../imge/Museum Situs Lubang Tambang Soero & Infobox_1.jpg"
+        data-img2="../imge/Museum Situs Lubang Tambang Soero & Infobox_2.jpg"
+        data-desc="Museum sejarah yang menawarkan pengalaman menyusuri terowongan tambang batu bara bawah tanah pertama di patahan Soegar."
+        data-hours="Selasa – Minggu: 08.00 – 16.30 WIB" data-closed="Senin: Tutup (Hari Perawatan)"
+        data-maps="https://maps.app.goo.gl/rp4qw7Lug8c5VnrW9"></div>
+
+      <div class="map-destination" data-index="2" data-name="Museum Kereta Api Sawahlunto"
+        data-type="MUSEUM SARANA PERKERETAAPIAN & MAK ITAM" data-img1="../imge/Museum kereta api sawahlunto_1.webp"
+        data-img2="../imge/Museum kereta api sawahlunto_2.jpg"
+        data-desc="Stasiun kereta tua tahun 1912 yang kini menyimpan koleksi sarana perkeretaapian dan lokomotif uap legendaris 'Mak Itam'."
+        data-hours="Selasa – Minggu: 08.00 – 16.00 / 17.00 WIB" data-closed="Senin: Tutup (Hari Perawatan)"
+        data-maps="https://maps.app.goo.gl/CoVDcMKq35rmW91G8"></div>
+
+      <div class="map-destination" data-index="3" data-name="Taman Satwa Kandi"
+        data-type="AREA REKREASI KELUARGA & KEBUN BINATANG" data-img1="../imge/Taman satwa kandi_1.webp"
+        data-img2="../imge/Taman Satwa kandi_2.jpg"
+        data-desc="Area rekreasi keluarga hasil revitalisasi lahan bekas tambang yang dilengkapi kebun binatang, kebun buah, dan area danau."
+        data-hours="Setiap Hari (Senin – Minggu): 08.00 – 17.30 WIB" data-closed="Buka Setiap Hari"
+        data-maps="https://maps.app.goo.gl/KkgB4oCq9rSnXqcG9"></div>
+
+      <div class="map-destination" data-index="4" data-name="Puncak Cemara City"
+        data-type="TAMAN WISATA PANORAMA ALAM KETINGGIAN" data-img1="../imge/Puncak Cemara City_1.jpg"
+        data-img2="../imge/Puncak Cemara Sawahlunto_2.jpg"
+        data-desc="Taman wisata ketinggian yang menyajikan panorama alam dan lanskap Kota Sawahlunto dari perbukitan."
+        data-hours="Setiap Hari (Senin – Minggu): 24 Jam" data-closed="Waktu terbaik: 07.00 – 21.00 WIB"
+        data-maps="https://maps.app.goo.gl/P39gsr4syuKNXXha8"></div>
+
+      <div class="map-destination" data-index="5" data-name="Batu Runciang"
+        data-type="GEOSITE ALAM GEOPARK NASIONAL SAWAHLUNTO" data-img1="../imge/Batu Runciang_1.jpg"
+        data-img2="../imge/Batu Runciang_2.jpg"
+        data-desc="Geosite alam bagian dari Geopark Nasional Sawahlunto yang menampilkan keunikan formasi gugusan batu kapur meruncing."
+        data-hours="Setiap Hari (Senin – Minggu): 24 Jam" data-closed="Area terbuka (Disarankan 08.00 – 17.00 WIB)"
+        data-maps="https://maps.app.goo.gl/A4BxAWsYLvt9y1cL6"></div>
+    </div>
+
+    <div id="lanternDataContainer" style="display: none;">
+      <div class="lantern-slide" data-index="0" data-img="../imge/lentera_foto_1.jpg" data-plate="Dokumentasi Foto #01"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Kantor Walikota Sawahlunto">
+        <div class="lantern-description">
+          <p>Kantor Walikota Sawahlunto dengan arsitektur atap Gonjong khas Minangkabau berdiri megah di pusat kota.
+            Bangunan ini merupakan simbol pemerintahan modern Sawahlunto yang memadukan unsur budaya lokal
+            dengan semangat transformasi kota dari bekas kota tambang menjadi kota warisan budaya UNESCO.
+            Sawahlunto diresmikan pada 1 Desember 1888 sebagai kota industri pertambangan batu bara modern
+            oleh Pemerintah Hindia Belanda.</p>
+        </div>
+      </div>
+
+      <div class="lantern-slide" data-index="1" data-img="../imge/lentera_foto_2.jpg" data-plate="Dokumentasi Foto #02"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Panorama Kota Sawahlunto dari Ketinggian">
+        <div class="lantern-description">
+          <p>Pemandangan kota Sawahlunto dari atas bukit memperlihatkan lembah hijau yang dikelilingi perbukitan
+            Bukit Barisan. Tulisan "SAWAHLUNTO" terpampang di puncak bukit, menandai identitas kota yang pernah
+            nyaris menjadi "kota mati" akibat menipisnya cadangan batu bara sejak era Perang Dunia II hingga akhir
+            1970-an. Kini kota ini telah bertransformasi menjadi destinasi wisata sejarah yang menawan.</p>
+        </div>
+      </div>
+
+      <div class="lantern-slide" data-index="2" data-img="../imge/lentera_foto_3.jpg" data-plate="Dokumentasi Foto #03"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Tambang Batu Bara Ombilin">
+        <div class="lantern-description">
+          <p>Area pertambangan batu bara Ombilin yang menjadi jantung peradaban Sawahlunto. Pada tahun 1867,
+            geolog Belanda Ir. Willem Hendrik de Greve menemukan cadangan batu bara raksasa sebesar 200 juta ton
+            di aliran Batang Ombilin. Penemuan inilah yang mendorong pembangunan seluruh infrastruktur kota,
+            termasuk jalur kereta api menembus perbukitan Minangkabau menuju Pelabuhan Teluk Bayur di Padang.</p>
+        </div>
+      </div>
+
+      <div class="lantern-slide" data-index="3" data-img="../imge/lentera_foto_4.jpg" data-plate="Dokumentasi Foto #04"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Lokomotif Uap Mak Itam di Stasiun Sawahlunto">
+        <div class="lantern-description">
+          <p>Lokomotif uap legendaris "Mak Itam" berdiri gagah di Stasiun Sawahlunto. Kereta api ini merupakan
+            bagian dari jaringan infrastruktur megah yang dibangun Belanda untuk mengangkut batu bara dari tambang
+            Ombilin menuju Pelabuhan Teluk Bayur. Ribuan buruh paksa berstatus tahanan yang dikenal sebagai "Orang
+            Rantai" turut membangun jalur rel ini menembus perbukitan terjal Minangkabau.</p>
+        </div>
+      </div>
+
+      <div class="lantern-slide" data-index="4" data-img="../imge/lentera_foto_5.jpg" data-plate="Dokumentasi Foto #05"
+        data-date="SAWAHLUNTO 1867 - 2019" data-title="Gedung Bukit Asam & Monumen Penambang">
+        <div class="lantern-description">
+          <p>Gedung bersejarah PT Bukit Asam dengan menara jam kolonial dan monumen penambang yang mengangkat
+            beliung ke langit—mengenang perjuangan para pekerja tambang. Pada awal 2000-an, pemerintah dan masyarakat
+            lokal melakukan transformasi besar mengalihkan fokus kota dari industri ekstraktif menjadi destinasi
+            pariwisata berbasis warisan budaya. Puncaknya, pada tahun 2019 UNESCO menetapkan Ombilin Coal Mining
+            Heritage of Sawahlunto sebagai Situs Warisan Dunia.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notifikasi Universal -->
+    <div id="toast" class="toast-message">
+      <span id="toastText">Pemberitahuan</span>
+    </div>
+
+    <!-- JavaScript Terpadu Tunggal -->
+    <script src="../js/translations-static.js?v=20261121-i18n"></script>
+  <script src="../js/heritage-english.js?v=20261121-i18n"></script>
+  <script src="../js/translations-extra.js?v=20261121-i18n"></script>
+  <script src="../firebase/firebase-client.js?v=2"></script>
+  <script src="../js/script.js?v=20261121-i18n"></script>
+  <script src="../js/backsound.js?v=4"></script>
+  <script src="../js/settings.js?v=20261121-i18n"></script>
+    <script src="../js/relic-album.js?v=20261122-gallery"></script>
+    <script src="../js/relic-lantern.js?v=20261121-i18n"></script>
+    <script src="../js/maps-config.js?v=1"></script>
+    <script src="../js/relic-map.js?v=20261121-i18n"></script>
+  <script src="../js/translations-tansi.js?v=20261124-text-controls"></script>
+  <script src="../js/credits-data.js?v=20261124"></script>
+  <script src="../js/credits.js?v=20261124"></script>
+</body>
+
+</html>

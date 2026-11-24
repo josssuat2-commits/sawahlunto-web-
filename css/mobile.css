@@ -1,0 +1,178 @@
+/* Phone layouts, including short landscape viewports. Loaded after component CSS. */
+@media (max-width: 768px), (max-height: 500px) and (orientation: landscape) {
+  .page-surat, .page-surat-terbuka, .page-kotak {
+    --mobile-top: max(12px, env(safe-area-inset-top));
+    --mobile-bottom: max(12px, env(safe-area-inset-bottom));
+    overflow-x: clip;
+  }
+
+  .room-container,
+  body.page-surat-terbuka .room-container {
+    width: 100%;
+    height: 100dvh;
+  }
+
+  .page-surat .chest-container,
+  .page-surat-terbuka .chest-container {
+    --room-art-width: max(100vw, 154.7dvh);
+    --room-art-height: max(64.64vw, 100dvh);
+  }
+
+  .lang-switch-top-right {
+    top: var(--mobile-top);
+    right: max(12px, env(safe-area-inset-right));
+    gap: 6px;
+  }
+  .btn-lang-toggle { min-height: 44px; padding: 8px 10px; gap: 5px; }
+  .btn-settings { width: 44px; height: 44px; }
+  .top-nav-bar {
+    top: var(--mobile-top);
+    left: max(12px, env(safe-area-inset-left));
+    max-width: calc(100% - 180px);
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .btn-back-nav { min-height: 44px; padding: 8px 10px; font-size: 12px; }
+  .btn-back-nav svg { flex-shrink: 0; }
+  .guest-info-badge { max-width: 100%; flex-wrap: wrap; overflow-wrap: anywhere; }
+  .guest-name-highlight { min-width: 0; overflow-wrap: anywhere; }
+
+  .envelope-center-wrapper { width: 100%; padding: 0 16px; }
+  .envelope-image { width: min(330px, 80vw, 55dvh); max-width: 100%; }
+  .envelope-action-bar { max-width: 100%; text-align: center; }
+  .action-subtext { font-size: 14px; line-height: 1.6; }
+  .chest-tooltip { max-width: min(240px, calc(100vw - 32px)); white-space: normal; text-align: center; }
+
+  /* Keep the room visible behind the paper; only the letter text scrolls. */
+  body.page-surat-terbuka { min-height: 100dvh; height: 100dvh; }
+  .open-letter-wrapper {
+    max-height: 100%;
+    padding: calc(var(--mobile-top) + 56px) 12px var(--mobile-bottom);
+  }
+  .open-letter-content {
+    min-height: 0;
+    max-height: calc(100dvh - 56px - var(--mobile-top) - var(--mobile-bottom));
+    padding: 16px 18px 20px;
+    justify-content: flex-start;
+  }
+  .open-letter-content > .document-language-toolbar,
+  .scroll-image-wrapper > .document-language-toolbar,
+  .ticket-dialog > .document-language-toolbar {
+    position: static;
+    width: 100%;
+    flex-shrink: 0;
+    gap: 8px;
+    margin: 0 0 12px;
+  }
+  .document-language-toolbar .document-close-button { width: 44px; height: 44px; }
+  .open-letter-text { flex: 1 1 auto; min-height: 0; max-height: none; padding-right: 6px; }
+  .open-letter-content p { font-size: 16px; line-height: 1.7; overflow-wrap: anywhere; }
+  .btn-close-letter { min-height: 44px; font-size: 14px; }
+
+  /* The PNG has wide transparent margins. Enlarge the art without widening the page. */
+  .page-kotak .room-container {
+    height: auto;
+    min-height: 100dvh;
+    padding: calc(var(--mobile-top) + 56px) 12px var(--mobile-bottom);
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+    overflow: clip;
+  }
+  .page-kotak .exploration-progress {
+    position: static;
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .page-kotak .open-chest-viewport {
+    width: 100%;
+    padding-bottom: 130px;
+    flex-shrink: 0;
+  }
+  .page-kotak .open-chest-container { width: min(720px, 160vw); max-width: none; max-height: none; flex-shrink: 0; }
+  .page-kotak .open-chest-main-image { flex-shrink: 0; }
+  .page-kotak .chest-action-group {
+    top: 100%;
+    bottom: auto;
+    width: min(480px, calc(100vw - 32px));
+    gap: 8px;
+    text-align: center;
+  }
+  .page-kotak .btn-open-item { min-height: 44px; padding: 10px 20px; font-size: 14px; }
+  .chest-action-subtext { font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+
+  /* Short screens need contained scrolling, with close controls inside each panel. */
+  .inspection-modal-overlay { height: 100dvh; padding: var(--mobile-top) 12px var(--mobile-bottom); }
+  .page-kotak .scroll-modal-container {
+    width: 100%;
+    max-height: calc(100dvh - var(--mobile-top) - var(--mobile-bottom));
+    min-height: 0;
+  }
+  .page-kotak .scroll-image-wrapper { min-height: 0; flex: 1 1 auto; overflow: hidden; padding: 16px 18px 20px; }
+  .page-kotak .scroll-letter-text { min-height: 0; max-height: none; font-size: 16px; line-height: 1.7; padding-right: 6px; }
+  .page-kotak .scroll-modal-actions { flex-shrink: 0; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .page-kotak .scroll-modal-actions button { flex: 1 1 120px; min-height: 44px; font-size: 14px; }
+
+  #prototypeGallery, .prototype-map, .prototype-lantern {
+    width: calc(100vw - 24px);
+    height: calc(100dvh - var(--mobile-top) - var(--mobile-bottom));
+    max-height: calc(100dvh - var(--mobile-top) - var(--mobile-bottom));
+    overflow: hidden;
+  }
+  #prototypeGallery .gallery-close-icon,
+  .prototype-gallery .gallery-close-icon {
+    position: static;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    font-size: 24px;
+  }
+  #prototypeGallery .prototype-gallery-header,
+  .map-prototype-header, .lantern-prototype-header { min-height: 0; padding: 12px; gap: 10px; }
+  #prototypeGallery .prototype-gallery-header h1,
+  .map-prototype-header h1, .lantern-prototype-header h1 { min-width: 0; padding: 0; font-size: 18px; overflow-wrap: anywhere; }
+  #prototypeGallery .prototype-gallery-body { min-height: 0; }
+  #prototypeGallery .gallery-zoom-trigger { width: 100%; }
+  #prototypeGallery .gallery-pagination button { width: 32px; height: 32px; }
+  #prototypeGallery .prototype-photo-card p { font-size: 15px; }
+  .map-prototype-body, .lantern-prototype-body { grid-template-columns: minmax(0, 1fr); min-height: 0; overscroll-behavior: contain; }
+  .map-destination-panel { overflow: visible; padding: 14px; }
+  .map-preview-panel { min-height: 260px; }
+  .map-preview-panel iframe { min-height: 240px; }
+  .lantern-prototype-body { padding: 16px; gap: 16px; }
+  .lantern-prototype-text { padding-top: 0; }
+  #prototypeGallery .prototype-gallery-footer,
+  .map-prototype-footer, .lantern-prototype-footer { min-height: 0; flex-wrap: wrap; padding: 10px 12px; gap: 8px; }
+  .map-footer-navigation, .lantern-prototype-navigation { flex-wrap: wrap; gap: 8px; }
+  .prototype-gallery button:not(.gallery-pagination button),
+  .map-photo-switch button, .map-external-link { min-height: 44px; }
+  .map-external-link { display: inline-flex; align-items: center; }
+  .gallery-pagination { max-width: 100%; }
+
+  .ticket-dialog {
+    width: calc(100vw - 24px);
+    max-height: calc(100dvh - var(--mobile-top) - var(--mobile-bottom));
+    padding: 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: #21160e;
+    border-radius: 8px;
+  }
+  .ticket-artwork .ticket-visual { width: 100%; height: auto; max-height: none; object-fit: contain; }
+  .ticket-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .ticket-actions button { flex: 1 1 140px; min-width: 0; min-height: 44px; font-size: 14px; padding: 10px 12px; overflow-wrap: anywhere; }
+  .album-lightbox { width: calc(100vw - 24px); height: calc(100dvh - 24px); padding-top: 64px; }
+  .album-lightbox > button { min-height: 44px; }
+  .open-letter-text, .scroll-letter-text, .prototype-photo-card { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+}
+
+@media (max-width: 360px) {
+  .top-nav-bar { max-width: calc(100% - 164px); }
+  .btn-back-nav { padding: 8px; font-size: 11px; gap: 5px; }
+  .lang-switch-top-right { gap: 4px; }
+  .btn-lang-toggle { padding: 8px; gap: 4px; }
+  .open-letter-content, .page-kotak .scroll-image-wrapper { padding-right: 14px; padding-left: 14px; }
+}

@@ -1,0 +1,5 @@
+{
+  "score": 5,
+  "summary": "Audit statis: UID sendiri, validasi create/update, tipe dan ukuran dibatasi; path lain ditolak. Belum deploy atau uji emulator.",
+  "findings": []
+}

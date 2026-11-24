@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "guestbookSync": true,
+  "config": {
+    "apiKey": "AIzaSyAbdtpZuJArlQ6o6v8DWfaLF4NZkUWU4Cw",
+    "authDomain": "sawah-lunto.firebaseapp.com",
+    "projectId": "sawah-lunto",
+    "appId": "1:712005697950:web:c586b93880f2c19315d68f",
+    "storageBucket": "sawah-lunto.firebasestorage.app"
+  }
+}

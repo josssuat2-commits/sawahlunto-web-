@@ -1,0 +1,41 @@
+{
+  "testedAt": "2026-11-11T02:50:17.429Z",
+  "transport": "Firebase REST with end-user ID token",
+  "checks": [
+    {
+      "name": "anonymous-login",
+      "passed": true
+    },
+    {
+      "name": "create-own-profile-server-timestamp",
+      "passed": true
+    },
+    {
+      "name": "read-own-profile",
+      "passed": true
+    },
+    {
+      "name": "update-own-valid-profile",
+      "passed": true
+    },
+    {
+      "name": "extra-role-update-denied",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated-read-denied",
+      "passed": true
+    },
+    {
+      "name": "other-owner-read-denied",
+      "passed": true
+    },
+    {
+      "name": "guestbook-list-denied",
+      "passed": true
+    }
+  ],
+  "uid": "EWxNiszVYKNwK6kQCrKqnC0KjYJ3",
+  "documentPath": "guestbook/EWxNiszVYKNwK6kQCrKqnC0KjYJ3",
+  "success": true
+}

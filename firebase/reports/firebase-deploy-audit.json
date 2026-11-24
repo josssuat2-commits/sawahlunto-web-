@@ -1,0 +1,18 @@
+{
+  "score": 4,
+  "summary": "Aturan lokal membatasi data ke UID pemilik dan memvalidasi create/update. Tes lokal lulus; probe cloud baca-saja pada 2026-11-16 menolak satu akses tanpa autentikasi. Belum cukup untuk menyatakan siap peluncuran publik: rules cloud lengkap, App Check, pembatasan API, dan pengaturan biaya belum diverifikasi.",
+  "findings": [
+    {
+      "check": "Storage Abuse",
+      "severity": "minor",
+      "issue": "Autentikasi anonim dan rules kepemilikan tidak membatasi jumlah akun atau frekuensi penulisan. Integrasi App Check tidak ditemukan pada client.",
+      "recommendation": "Siapkan App Check dan verifikasi enforcement untuk layanan yang digunakan; tinjau kuota, pantau penggunaan, dan atur peringatan anggaran bila memakai billing."
+    },
+    {
+      "check": "Deployment scope",
+      "severity": "minor",
+      "issue": "Output Vercel mencakup akar proyek dan belum ada .vercelignore untuk mengecualikan laporan serta file pengembangan. Perlindungan .htaccess tidak berlaku pada Vercel.",
+      "recommendation": "Batasi output deploy ke aset runtime atau kecualikan file pengembangan, laporan, serta file lingkungan dari deployment."
+    }
+  ]
+}

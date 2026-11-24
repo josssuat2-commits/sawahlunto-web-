@@ -1,0 +1,42 @@
+rules_version = '2';
+// guestbook/{uid}: private visitor name/institution, server updatedAt (legacy preserved).
+// visitors/{uid}: optional firstSeenAt/lastSeenAt/authType; no public presence.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    function validGuest() {
+      let data = request.resource.data;
+      return data.keys().hasAll(['nama', 'institusi', 'updatedAt'])
+        && data.keys().hasOnly(['nama', 'institusi', 'updatedAt'])
+        && data.nama is string && data.nama.size() > 0 && data.nama.size() <= 255
+        && data.institusi is string && data.institusi.size() > 0 && data.institusi.size() <= 255
+        && data.updatedAt is timestamp && data.updatedAt == request.time;
+    }
+    match /guestbook/{uid} {
+      allow get: if isOwner(uid);
+      allow list: if false;
+      allow create, update: if isOwner(uid) && validGuest();
+      allow delete: if false;
+    }
+    function validVisit() {
+      let d = request.resource.data;
+      return d.keys().hasAll(['firstSeenAt', 'lastSeenAt', 'authType'])
+        && d.keys().hasOnly(['firstSeenAt', 'lastSeenAt', 'authType'])
+        && d.firstSeenAt is timestamp && d.lastSeenAt is timestamp
+        && d.lastSeenAt == request.time && d.firstSeenAt <= d.lastSeenAt
+        && d.authType is string && d.authType == request.auth.token.firebase.sign_in_provider;
+    }
+    match /visitors/{uid} {
+      allow get: if isOwner(uid);
+      allow list: if false;
+      allow create: if isOwner(uid) && validVisit() && request.resource.data.firstSeenAt == request.time;
+      allow update: if isOwner(uid) && validVisit() && request.resource.data.firstSeenAt == resource.data.firstSeenAt;
+      allow delete: if false;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

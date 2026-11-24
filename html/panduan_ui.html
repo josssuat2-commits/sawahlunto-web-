@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panduan warna, tipografi, tombol, dan komponen antarmuka Surat Pak Itam yang Belum Selesai.">
+  <title>Panduan UI &amp; Komponen — Sawahlunto</title>
+  <link rel="icon" type="image/png" href="../imge/kertas.png.png">
+  <link rel="stylesheet" href="../css/style.css?v=20261113-fonts">
+  <link rel="stylesheet" href="../css/settings.css?v=20261113-fonts">
+  <link rel="stylesheet" href="../css/relic-dialogs.css?v=20261121-i18n">
+  <link rel="stylesheet" href="../css/ui-guide.css?v=2">
+  <script src="../js/translations-static.js?v=20261121-i18n" defer></script>
+  <script src="../js/translations-extra.js?v=20261121-i18n" defer></script>
+  <script src="../js/ui-guide.js?v=20261121-i18n" defer></script>
+</head>
+<body class="page-ui-guide">
+  <a class="guide-skip" href="#konten">Lewati navigasi</a>
+  <aside class="guide-sidebar">
+    <a class="guide-brand" href="login_page.html"><span class="guide-monogram" aria-hidden="true">S.</span><span>SAWAHLUNTO<small>Surat Pak Itam</small></span></a>
+    <p class="guide-nav-label">PANDUAN ANTARMUKA</p>
+    <nav class="guide-nav" aria-label="Bagian panduan UI">
+      <a href="#ringkasan" aria-current="location"><span>01</span> Ringkasan</a>
+      <a href="#tombol"><span>02</span> Tombol</a>
+      <a href="#warna"><span>03</span> Warna</a>
+      <a href="#tipografi"><span>04</span> Tipografi</a>
+      <a href="#formulir"><span>05</span> Formulir</a>
+      <a href="#umpan-balik"><span>06</span> Status &amp; dialog</a>
+      <a href="#popup"><span>07</span> Popup kosong</a>
+    </nav>
+    <div class="guide-sidebar-bottom"><p>Satu bahasa visual,<br>di setiap sudut cerita.</p><a href="login_page.html">← Kembali ke Buku Tamu</a></div>
+  </aside>
+
+  <main class="guide-main" id="konten">
+    <header class="guide-topbar"><span>RUANG DOKUMENTASI <span aria-hidden="true">/</span> UI KIT</span><a href="surat_page.html">Buka website <span aria-hidden="true">↗</span></a></header>
+    <section class="guide-intro" id="ringkasan" aria-labelledby="guide-title">
+      <p class="guide-eyebrow"><span aria-hidden="true">◆</span> KOLEKSI KOMPONEN</p>
+      <h1 id="guide-title">Di balik<br><em>sebuah cerita.</em></h1>
+      <p class="guide-lead">Panduan UI &amp; komponen Sawahlunto. Kumpulan elemen yang membentuk pengalaman <span>Surat Pak Itam yang Belum Selesai</span>, dari tombol pertama hingga akhir penjelajahan.</p>
+      <div class="guide-intro-footer"><a href="#tombol">Jelajahi komponen <span aria-hidden="true">↓</span></a><span>Cokelat kayu · Kertas hangat · Aksen emas</span></div>
+    </section>
+
+    <div class="guide-note"><span class="guide-note-symbol" aria-hidden="true">i</span><p><strong>Ini ruang untuk mencoba.</strong> Tombol demo hanya menampilkan contoh interaksi. Formulir tidak menyimpan data dan tidak mengubah progres penjelajahan Anda.</p></div>
+
+    <section class="guide-section" id="tombol" aria-labelledby="buttons-title">
+      <div class="guide-section-heading"><div><p class="guide-eyebrow">02 / INTERAKSI</p><h2 id="buttons-title">Tombol</h2></div><p>Aksi utama, navigasi, dan kontrol kecil.<br>Arahkan kursor atau gunakan tombol Tab untuk mencoba.</p></div>
+      <div class="guide-grid guide-buttons-grid">
+        <article class="guide-component"><div class="guide-preview"><button type="button" class="btn-submit" data-demo="Contoh tombol Masuk berhasil ditekan.">Masuk</button></div><div class="guide-component-info"><div><h3>Aksi utama</h3><p>Buku Tamu · mengirim formulir</p></div><button class="guide-copy" type="button" data-copy="btn-submit" aria-label="Salin kelas btn-submit"><code>.btn-submit</code><span aria-hidden="true">⧉</span></button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-preview-dark"><button type="button" class="btn-open-letter" data-open-dialog="guidePopupLetter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 6 9 7 9-7"/></svg>Buka Surat Warkah <span class="arrow-icon" aria-hidden="true">→</span></button></div><div class="guide-component-info"><div><h3>Buka surat</h3><p>Ruangan Surat · membuka cerita</p></div><button class="guide-copy" type="button" data-copy="btn-open-letter" aria-label="Salin kelas btn-open-letter"><code>.btn-open-letter</code><span aria-hidden="true">⧉</span></button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-preview-dark"><button type="button" class="btn-close-letter" data-demo="Tutup surat untuk kembali ke ruangan, lalu klik peti untuk melanjutkan.">Tutup Surat</button></div><div class="guide-component-info"><div><h3>Tutup surat</h3><p>Surat Terbuka · kembali ke ruangan surat</p></div><button class="guide-copy" type="button" data-copy="btn-close-letter" aria-label="Salin kelas btn-close-letter"><code>.btn-close-letter</code><span aria-hidden="true">⧉</span></button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-preview-dark"><button type="button" class="btn-open-item" data-demo="Contoh aksi memeriksa benda di dalam peti.">Buka Benda</button></div><div class="guide-component-info"><div><h3>Eksplorasi benda</h3><p>Peti Terbuka · memeriksa peninggalan</p></div><button class="guide-copy" type="button" data-copy="btn-open-item" aria-label="Salin kelas btn-open-item"><code>.btn-open-item</code><span aria-hidden="true">⧉</span></button></div></article>
+        <article class="guide-component"><div class="guide-preview"><button type="button" class="btn-back-nav" data-demo="Contoh tombol kembali ke halaman sebelumnya.">← Kembali ke Ruangan</button></div><div class="guide-component-info"><div><h3>Navigasi kembali</h3><p>Ruangan Surat &amp; Peti Terbuka</p></div><button class="guide-copy" type="button" data-copy="btn-back-nav" aria-label="Salin kelas btn-back-nav"><code>.btn-back-nav</code><span aria-hidden="true">⧉</span></button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-control-row"><button type="button" class="btn-lang-toggle" id="guideLanguage" aria-label="Coba tombol bahasa" aria-pressed="false"><svg class="globe-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M2 12h20"/></svg><span class="lang-badge active" data-lang="id">ID</span><span class="lang-sep">/</span><span class="lang-badge" data-lang="en">EN</span></button><button type="button" class="btn-settings" data-open-dialog aria-label="Coba tombol pengaturan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m9 3-1 3-3 1-2 4 2 2v3l3 3h3l2 2 4-2 1-3 3-1V9l-3-1-1-3-4-2-2 2z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="guide-component-info"><div><h3>Kontrol global</h3><p>Semua halaman · bahasa &amp; pengaturan</p></div><code>.btn-lang-toggle<br>.btn-settings</code></div></article>
+      </div>
+      <div class="guide-panel guide-button-states"><div><h3>Keadaan tombol</h3><p>Umpan balik selama sebuah aksi berlangsung.</p></div><div class="guide-state"><button type="button" class="btn-submit" data-demo="Tombol dalam keadaan normal.">Masuk</button><span>Normal / hover / fokus</span></div><div class="guide-state"><button type="button" class="btn-submit" id="guideLoading"><span>Mulai demo</span><span class="spinner" aria-hidden="true"></span></button><span>Klik untuk melihat loading</span></div><div class="guide-state"><button type="button" class="btn-submit" disabled>Belum tersedia</button><span>Nonaktif</span></div></div>
+      <div class="guide-panel guide-small-controls"><div><h3>Kontrol penjelajahan</h3><p>Contoh navigasi galeri dan pilihan lokasi.</p></div><div class="guide-gallery-demo"><div class="gallery-image-controls"><button type="button" id="guidePrevious" aria-label="Foto sebelumnya" disabled>‹</button><output id="guideSlide" aria-live="polite">Foto 1 dari 3</output><button type="button" id="guideNext" aria-label="Foto berikutnya">›</button></div><code>.gallery-image-controls</code></div><div class="guide-map-demo"><div class="map-photo-switch" role="group" aria-label="Contoh pilihan foto"><button type="button" aria-pressed="true">Masa lalu</button><button type="button" aria-pressed="false">Masa kini</button></div><code>.map-photo-switch</code></div></div>
+    </section>
+
+    <section class="guide-section" id="warna" aria-labelledby="colors-title">
+      <div class="guide-section-heading"><div><p class="guide-eyebrow">03 / PALET</p><h2 id="colors-title">Warna yang bercerita</h2></div><p>Nuansa arsip, kayu tua, dan cahaya lentera.<br>Klik kode warna untuk menyalinnya.</p></div>
+      <div class="guide-colors">
+        <button type="button" class="guide-swatch" data-copy="#3d2c20" style="--swatch:var(--color-primary)"><span class="guide-swatch-color"></span><strong>Cokelat utama</strong><code>#3D2C20</code><small>--color-primary</small></button>
+        <button type="button" class="guide-swatch" data-copy="#26190f" style="--swatch:var(--color-heading)"><span class="guide-swatch-color"></span><strong>Tinta judul</strong><code>#26190F</code><small>--color-heading</small></button>
+        <button type="button" class="guide-swatch" data-copy="#a5783b" style="--swatch:var(--gold-accent)"><span class="guide-swatch-color"></span><strong>Emas arsip</strong><code>#A5783B</code><small>--gold-accent</small></button>
+        <button type="button" class="guide-swatch" data-copy="#e2ba7d" style="--swatch:var(--gold-highlight)"><span class="guide-swatch-color"></span><strong>Cahaya lentera</strong><code>#E2BA7D</code><small>--gold-highlight</small></button>
+        <button type="button" class="guide-swatch" data-copy="#dccfc2" style="--swatch:var(--color-border)"><span class="guide-swatch-color"></span><strong>Garis kertas</strong><code>#DCCFC2</code><small>--color-border</small></button>
+        <button type="button" class="guide-swatch" data-copy="rgba(253, 250, 246, 0.94)" style="--swatch:var(--bg-card)"><span class="guide-swatch-color"></span><strong>Permukaan kartu</strong><code>RGBA · 94%</code><small>--bg-card</small></button>
+      </div>
+    </section>
+
+    <section class="guide-section" id="tipografi" aria-labelledby="type-title">
+      <div class="guide-section-heading"><div><p class="guide-eyebrow">04 / HURUF</p><h2 id="type-title">Tiga suara, satu kisah</h2></div><p>Judul yang berkarakter, cerita yang hangat,<br>dan antarmuka yang mudah dibaca.</p></div>
+      <div class="guide-panel guide-type-panel">
+        <article class="guide-type-row"><div><span class="guide-type-role">01 — JUDUL</span><h3>Cinzel</h3><code>--font-title · 400–700</code></div><div class="guide-type-sample guide-font-title">Jejak yang tak hilang.<small>ABCDEFGHIJKLMNOPQRSTUVWXYZ · 0123456789</small></div></article>
+        <article class="guide-type-row"><div><span class="guide-type-role">02 — NARASI</span><h3>Lora</h3><code>--font-serif · 400–700</code></div><div class="guide-type-sample guide-font-story">“Selalu ada cerita yang<br>menunggumu pulang.”<small>Untuk surat, kutipan, dan kisah peninggalan.</small></div></article>
+        <article class="guide-type-row"><div><span class="guide-type-role">03 — ANTARMUKA</span><h3>Inter</h3><code>--font-body · 400–800</code></div><div class="guide-type-sample guide-font-interface">Mulai penjelajahanmu.<small>Untuk tombol, label, navigasi, dan informasi singkat.</small></div></article>
+      </div>
+    </section>
+
+    <section class="guide-section" id="formulir" aria-labelledby="form-title">
+      <div class="guide-section-heading"><div><p class="guide-eyebrow">05 / INPUT</p><h2 id="form-title">Ruang untuk mengisi</h2></div><p>Pola formulir dari halaman Buku Tamu.<br>Coba isi, centang, dan kirim contoh berikut.</p></div>
+      <div class="guide-form-layout">
+        <form class="guide-panel guide-demo-form" id="guideForm" novalidate>
+          <span class="category-badge">CONTOH FORMULIR</span><h3>Buku Tamu</h3><p class="guide-form-caption">Senang menyambut Anda di ruang cerita.</p>
+          <div class="form-group"><div class="label-row"><label class="field-label" for="guideName">Nama lengkap</label><span class="field-hint">Wajib diisi</span></div><div class="input-container"><span class="input-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="4"/><path d="M4 21v-3a8 8 0 0 1 16 0v3"/></svg></span><input class="form-input" id="guideName" name="nama" placeholder="Contoh: Satria Pratama" maxlength="255" autocomplete="off" aria-describedby="guideNameError" required></div><span class="guide-error" id="guideNameError" aria-live="polite"></span></div>
+          <div class="form-group"><div class="label-row"><label class="field-label" for="guideInstitution">Asal institusi</label><span class="field-hint">Wajib diisi</span></div><div class="input-container"><span class="input-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m3 9 9-6 9 6M3 10h18M5 10v10m7-10v10m7-10v10M2 21h20"/></svg></span><input class="form-input" id="guideInstitution" name="institusi" placeholder="Contoh: Universitas Andalas / Mandiri" maxlength="255" autocomplete="off" aria-describedby="guideInstitutionError" required></div><span class="guide-error" id="guideInstitutionError" aria-live="polite"></span></div>
+          <label class="checkbox-label"><input type="checkbox" class="custom-checkbox" checked> Contoh pilihan Ingat Saya</label>
+          <button class="btn-submit" type="submit">Coba kirim formulir <span aria-hidden="true">→</span></button><p class="guide-demo-caption">Demo saja. Data tidak dikirim atau disimpan.</p>
+        </form>
+        <div class="guide-form-notes"><article><span>01</span><div><h3>Label yang jelas</h3><p>Label tetap terlihat ketika kolom diisi. Petunjuk singkat membantu pengunjung memahami isian.</p><code>.field-label · .field-hint</code></div></article><article><span>02</span><div><h3>Fokus yang terlihat</h3><p>Klik kolom atau tekan Tab. Garis cokelat dan lingkar fokus menandai kolom yang aktif.</p><code>.form-input:focus</code></div></article><article><span>03</span><div><h3>Umpan balik langsung</h3><p>Kirim formulir kosong untuk mencoba pesan kesalahan. Isi kedua kolom untuk melihat notifikasi berhasil.</p><code>aria-invalid · aria-describedby</code></div></article></div>
+      </div>
+    </section>
+
+    <section class="guide-section" id="umpan-balik" aria-labelledby="feedback-title">
+      <div class="guide-section-heading"><div><p class="guide-eyebrow">06 / UMPAN BALIK</p><h2 id="feedback-title">Setiap aksi punya jawaban</h2></div><p>Status menunjukkan posisi pengunjung.<br>Dialog dan notifikasi memberi konteks berikutnya.</p></div>
+      <div class="guide-grid">
+        <article class="guide-panel guide-feedback-card"><h3>Status penjelajahan</h3><p>Penanda urutan benda di dalam Peti.</p><div class="guide-status-preview"><span class="step-chip completed">✓ Surat selesai</span><span class="step-arrow" aria-hidden="true">→</span><span class="step-chip active">Album aktif</span><span class="step-arrow" aria-hidden="true">→</span><span class="step-chip locked">Peta terkunci</span></div><code>.step-chip.completed / .active / .locked</code></article>
+        <article class="guide-panel guide-feedback-card"><h3>Notifikasi singkat</h3><p>Pesan sementara setelah sebuah aksi dilakukan.</p><div class="guide-toast-sample"><span aria-hidden="true">✓</span> Contoh formulir berhasil diisi.</div><button type="button" class="guide-text-button" data-demo="Contoh notifikasi: aksi berhasil dilakukan.">Tampilkan notifikasi <span aria-hidden="true">↗</span></button><code>.toast-message.show</code></article>
+        <article class="guide-panel guide-feedback-card"><h3>Dialog &amp; pengaturan</h3><p>Header gelap, isi berwarna kertas, dan aksi penutup. Coba juga kontrol volume di dalamnya.</p><button type="button" class="settings-done" data-open-dialog aria-haspopup="dialog" aria-controls="guideDialog">Buka contoh dialog <span aria-hidden="true">↗</span></button><code>.settings-dialog</code></article>
+        <article class="guide-panel guide-feedback-card"><h3>Halaman sumber</h3><p>Lihat komponen di dalam pengalaman aslinya.</p><div class="guide-source-links"><a href="login_page.html">Buku Tamu <span aria-hidden="true">↗</span></a><a href="surat_page.html">Ruangan Surat <span aria-hidden="true">↗</span></a><a href="surat_terbuka.html">Surat Terbuka <span aria-hidden="true">↗</span></a><a href="kotak_terbuka_page.html">Peti Terbuka <span aria-hidden="true">↗</span></a></div></article>
+      </div>
+    </section>
+    <section class="guide-section" id="popup" aria-labelledby="popup-title">
+      <div class="guide-section-heading"><div><p class="guide-eyebrow">07 / KERANGKA POPUP</p><h2 id="popup-title">Bentuknya dulu, ceritanya nanti</h2></div><p>Contoh popup tanpa isi konten.<br>Klik untuk melihat ukuran, panel, dan tombol penutup.</p></div>
+      <div class="guide-grid guide-popup-grid">
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini guide-popup-mini-letter"><div></div></div></div><div class="guide-component-info"><div><h3>Surat dari Ayah</h3><p>Lembaran kertas &amp; tombol tutup mengambang</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupLetter">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini guide-popup-mini-inspection"><div></div></div></div><div class="guide-component-info"><div><h3>Inspeksi benda</h3><p>Kartu gelap dengan area pemeriksaan kosong</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupInspection">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini"><div class="guide-popup-mini-card"></div></div></div><div class="guide-component-info"><div><h3>Album foto</h3><p>Header, kartu kertas, navigasi &amp; footer</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupAlbum">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini"><div class="guide-popup-mini-split"></div></div></div><div class="guide-component-info"><div><h3>Lentera tambang</h3><p>Dua kolom kosong untuk cerita dan visual</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupLantern">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini"><div class="guide-popup-mini-map"></div></div></div><div class="guide-component-info"><div><h3>Peta penjelajahan</h3><p>Panel lokasi &amp; area peta kosong</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupMap">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini guide-popup-mini-ticket"><div></div></div></div><div class="guide-component-info"><div><h3>Tiket perjalanan</h3><p>Bidang tiket lebar tanpa gambar atau tulisan</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupTicket">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini guide-popup-mini-settings"><div></div></div></div><div class="guide-component-info"><div><h3>Pengaturan</h3><p>Dialog ringkas dengan area isi kosong</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupSettings">Buka popup ↗</button></div></article>
+        <article class="guide-component"><div class="guide-preview guide-popup-preview" aria-hidden="true"><div class="guide-popup-mini guide-popup-mini-lightbox"><div></div></div></div><div class="guide-component-info"><div><h3>Perbesar gambar</h3><p>Lightbox gelap tanpa foto</p></div><button type="button" class="guide-popup-launch" data-open-dialog="guidePopupLightbox">Buka popup ↗</button></div></article>
+      </div>
+      <p class="guide-popup-help">Semua contoh dapat ditutup lewat tombol Tutup, tombol Esc, atau klik di luar panel.</p>
+    </section>
+    <footer class="guide-footer"><span>SAWAHLUNTO <span aria-hidden="true">/</span> Panduan UI &amp; Komponen</span><a href="#ringkasan">Kembali ke atas ↑</a></footer>
+  </main>
+
+  <dialog class="settings-dialog" id="guideDialog" aria-labelledby="guideDialogTitle" aria-describedby="guideDialogDescription">
+    <header class="settings-header"><div><span class="settings-eyebrow">CONTOH KOMPONEN</span><h2 id="guideDialogTitle">Ruang pengaturan</h2></div><button type="button" class="settings-close" data-close-dialog aria-label="Tutup contoh dialog">×</button></header>
+    <div class="settings-content"><p class="settings-section-label">SUARA LATAR</p><div class="settings-volume-heading"><label for="guideVolume">Volume backsound</label><output for="guideVolume" id="guideVolumeValue">35%</output></div><p class="settings-description" id="guideDialogDescription">Contoh kontrol volume. Penggeser ini hanya untuk demonstrasi dan tidak mengubah suara website.</p><div class="settings-volume-controls"><button type="button" class="settings-step" id="guideVolumeDown" aria-label="Kurangi volume demo">−</button><input type="range" id="guideVolume" min="0" max="100" value="35" aria-valuetext="35%"><button type="button" class="settings-step" id="guideVolumeUp" aria-label="Tambah volume demo">+</button></div><div class="settings-range-labels"><span>Senyap</span><span>Maksimal</span></div></div>
+    <footer class="settings-footer"><span>Tekan Esc atau Selesai untuk menutup.</span><button type="button" class="settings-done" data-close-dialog>Selesai</button></footer>
+  </dialog>
+  <!-- Empty content areas are intentional: these examples showcase popup frames only. -->
+  <dialog id="guidePopupLetter" class="guide-empty-popup guide-letter-popup" aria-label="Contoh popup surat dari Ayah tanpa konten">
+    <button type="button" class="relic-close-button" data-close-dialog aria-label="Tutup popup surat">×</button>
+    <div class="scroll-image-wrapper guide-empty-letter" aria-hidden="true"></div>
+    <footer class="guide-empty-footer"><button type="button" class="gallery-footer-close" data-close-dialog>Tutup</button></footer>
+  </dialog>
+  <dialog id="guidePopupInspection" class="inspection-modal-card guide-empty-popup guide-inspection-popup" aria-labelledby="guideInspectionTitle">
+    <header class="inspection-header"><div class="inspection-title-group"><span class="inspection-kicker">KERANGKA POPUP</span><div class="inspection-main-title"><span class="status-dot" aria-hidden="true"></span><h2 id="guideInspectionTitle">Inspeksi benda</h2></div></div><button type="button" class="btn-close-inspection" data-close-dialog aria-label="Tutup popup inspeksi">×</button></header>
+    <div class="guide-empty-area guide-empty-inspection" aria-hidden="true"></div>
+    <footer class="guide-empty-footer"><button type="button" class="gallery-footer-close" data-close-dialog>Tutup</button></footer>
+  </dialog>
+  <dialog id="guidePopupAlbum" class="prototype-gallery guide-empty-popup" aria-labelledby="guideAlbumTitle">
+    <header class="prototype-gallery-header"><h2 id="guideAlbumTitle">Album foto</h2><button type="button" class="gallery-close-icon" data-close-dialog aria-label="Tutup popup album">×</button></header>
+    <div class="prototype-gallery-body guide-empty-album"><div class="prototype-photo-card" aria-hidden="true"></div></div>
+    <footer class="prototype-gallery-footer"><button type="button" class="gallery-footer-close" data-close-dialog>Tutup</button><div class="guide-empty-navigation" role="group" aria-label="Navigasi album kosong"><button type="button" class="btn-album-nav" disabled aria-label="Foto sebelumnya">←</button><button type="button" class="btn-album-nav" disabled aria-label="Foto berikutnya">→</button></div></footer>
+  </dialog>
+  <dialog id="guidePopupLantern" class="prototype-gallery prototype-lantern guide-empty-popup" aria-labelledby="guideLanternTitle">
+    <header class="lantern-prototype-header"><h2 id="guideLanternTitle">Lentera tambang</h2><button type="button" class="gallery-close-icon" data-close-dialog aria-label="Tutup popup lentera">×</button></header>
+    <div class="lantern-prototype-body guide-empty-lantern"><div class="guide-empty-area" aria-hidden="true"></div><div class="guide-empty-area" aria-hidden="true"></div></div>
+    <footer class="lantern-prototype-footer"><button type="button" class="lantern-prototype-close" data-close-dialog>Tutup</button><div class="lantern-prototype-navigation"><button type="button" class="lantern-prototype-back" disabled>Sebelumnya</button><button type="button" class="lantern-prototype-next" disabled>Berikutnya →</button></div></footer>
+  </dialog>
+  <dialog id="guidePopupMap" class="prototype-gallery prototype-map guide-empty-popup" aria-labelledby="guideMapTitle">
+    <header class="map-prototype-header"><h2 id="guideMapTitle">Peta penjelajahan</h2><button type="button" class="gallery-close-icon" data-close-dialog aria-label="Tutup popup peta">×</button></header>
+    <div class="map-prototype-body guide-empty-map"><div class="map-destination-panel" aria-hidden="true"></div><div class="map-preview-panel" aria-hidden="true"></div></div>
+    <footer class="map-prototype-footer"><button type="button" class="map-close-button" data-close-dialog>Tutup</button><button type="button" class="map-next-button" disabled>Lokasi berikutnya →</button></footer>
+  </dialog>
+  <dialog id="guidePopupTicket" class="ticket-dialog guide-empty-popup guide-ticket-popup" aria-label="Contoh popup tiket tanpa konten">
+    <button type="button" class="relic-close-button" data-close-dialog aria-label="Tutup popup tiket">×</button>
+    <div class="guide-empty-ticket" aria-hidden="true"></div>
+    <footer class="ticket-actions"><button type="button" data-close-dialog>Tutup</button></footer>
+  </dialog>
+  <dialog id="guidePopupSettings" class="settings-dialog guide-empty-popup guide-settings-popup" aria-labelledby="guideSettingsTitle">
+    <header class="settings-header"><div><span class="settings-eyebrow">KERANGKA POPUP</span><h2 id="guideSettingsTitle">Pengaturan</h2></div><button type="button" class="settings-close" data-close-dialog aria-label="Tutup popup pengaturan">×</button></header>
+    <div class="settings-content guide-empty-settings" aria-hidden="true"></div>
+    <footer class="settings-footer"><button type="button" class="settings-done" data-close-dialog>Tutup</button></footer>
+  </dialog>
+  <dialog id="guidePopupLightbox" class="album-lightbox guide-empty-popup" aria-label="Contoh popup perbesar gambar tanpa konten">
+    <button type="button" data-close-dialog>Tutup ×</button>
+    <div class="guide-empty-lightbox" aria-hidden="true"></div>
+  </dialog>
+  <div class="toast-message" id="guideToast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

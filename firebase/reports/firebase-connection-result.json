@@ -1,0 +1,38 @@
+{
+  "testedAt": "2026-11-16T12:22:13.133Z",
+  "projectId": "sawah-lunto",
+  "guestbookSync": true,
+  "mode": "read-only",
+  "results": [
+    {
+      "name": "sdk-app",
+      "httpStatus": 200
+    },
+    {
+      "name": "sdk-auth",
+      "httpStatus": 200
+    },
+    {
+      "name": "sdk-firestore",
+      "httpStatus": 200
+    },
+    {
+      "name": "auth-public-config",
+      "httpStatus": 200,
+      "projectId": "712005697950",
+      "authorizedDomains": [
+        "localhost",
+        "sawah-lunto.firebaseapp.com",
+        "sawah-lunto.web.app"
+      ]
+    },
+    {
+      "name": "firestore-unauthenticated-read",
+      "httpStatus": 403,
+      "error": {
+        "status": "PERMISSION_DENIED",
+        "message": "Missing or insufficient permissions."
+      }
+    }
+  ]
+}

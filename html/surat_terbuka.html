@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Terbuka - Sawah Lunto</title>
+  <link rel="stylesheet" href="../css/style.css?v=20261113-fonts">
+  <link rel="stylesheet" href="../css/settings.css?v=20261113-fonts">
+  <link rel="stylesheet" href="../css/translations-tansi.css?v=20261122-ticket-images">
+  <link rel="stylesheet" href="../css/mobile.css?v=20261124">
+  <link rel="stylesheet" href="../css/letters.css?v=20261124-compact-actions">
+  <link rel="stylesheet" href="../css/credits.css?v=20261124">
+</head>
+
+<body class="page-surat-terbuka">
+
+  <!-- Tombol Pengganti Bahasa (Pojok Kanan Atas) -->
+  <div class="lang-switch-top-right">
+    <button type="button" id="btnToggleLanguage" class="btn-lang-toggle" title="Ganti Bahasa / Switch Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" class="globe-icon">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="2" y1="12" x2="22" y2="12"></line>
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      </svg>
+      <span class="lang-badge lang-badge-id active">ID</span>
+      <span class="lang-sep">/</span>
+      <span class="lang-badge lang-badge-en">EN</span>
+    </button>
+  </div>
+
+  <div class="room-container">
+    <!-- Peti kayu pada posisi yang sama dengan halaman surat -->
+    <div class="chest-container chest-background" aria-hidden="true">
+      <img src="../imge/kotak.png.png" alt="" class="chest-image">
+    </div>
+
+    <div class="open-letter-wrapper letter-presentation">
+      <div class="open-letter-content letter-paper">
+        <article class="open-letter-text letter-text" aria-label="Surat Ayah untuk anaknya">
+          <p class="letter-salutation">Anakku di perantaun...</p>
+          <p>Kota ini mungkin tak lagi seramai dulu, saat deru kereta api batu bara membangunkanku setiap pagi.</p>
+          <p>Tapi setiap sudut jalan, lorong batu, dan hembusan angin di lembah Sawahlunto ini masih menyimpan cerita yang belum selesai kusampaikan padamu.</p>
+          <p>Ayah sengaja menyimpan sebuah kotak tua ini.</p>
+          <p>Di dalamnya ada jejak-jejak masa lalu dan keindahan yang menunggu untuk kamu sentuh kembali.</p>
+          <p>Buka satu per satu, pahami kisahnya, dan temukan alasan mengapa tempat ini selalu menjadi rumah tempatmu pulang.</p>
+        </article>
+      </div>
+        <div class="letter-action-area letter-actions">
+          <a href="surat_page.html" class="btn-close-letter" title="Kembali ke Ruangan" data-i18n-title="letter_close_title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span data-i18n="letter_close_btn">Tutup Surat</span>
+          </a>
+        </div>
+    </div>
+  </div>
+  <script src="../js/translations-static.js?v=20261121-i18n"></script>
+  <script src="../js/heritage-english.js?v=20261121-i18n"></script>
+  <script src="../js/translations-extra.js?v=20261121-i18n"></script>
+  <script src="../firebase/firebase-client.js?v=2"></script>
+  <script src="../js/script.js?v=20261121-i18n"></script>
+  <script src="../js/backsound.js?v=4"></script>
+  <script src="../js/settings.js?v=20261121-i18n"></script>
+  <script src="../js/translations-tansi.js?v=20261124-text-controls"></script>
+  <script src="../js/credits-data.js?v=20261124"></script>
+  <script src="../js/credits.js?v=20261124"></script>
+</body>
+
+</html>
